@@ -8,18 +8,14 @@ U = \tweak Stem.direction #UP \etc
 
 
 \header {
-  title = \markup \normal-text \normalsize \fontsize #9.276 \bold \italic
+  title = \markup \normal-text \normalsize \fontsize #9.276 \bold \italic \typewriter
   "LONELY TOWN"
-  composer = \markup \normal-text \normalsize \concat { \italic
-    "arr. Peter Kempf " \italic }
+  composer = \markup \normal-text \normalsize \concat { "arr. Peter Kempf " }
   subtitle = \markup \normal-text \normalsize \concat { \italic
-    "for Gotham Chorus, July 2026 " \italic "originally performed by Vulfpeck "
-    \italic " " \italic "updated 20 September 2026 (rev 3)" }
-  poet = \markup \normal-text \normalsize \concat { \italic
-    "By Ryan Lerman, Theo Katzman " \italic }
+    "for Gotham Chorus, July 2026" }
+  poet = \markup \normal-text \normalsize \concat { "By Ryan Lerman, Theo Katzman " }
   copyright = \markup \normal-text \normalsize \fontsize #-1.705
   "Copyright © 2025 DUKES POINT MUSIC / RESERVOIR 416 / WHOOPEE GUY MUSIC"
-  "work-title" = "Lonely Town"
   "id: copyright" =
   "Copyright © 2025 DUKES POINT MUSIC / RESERVOIR 416 / WHOOPEE GUY MUSIC"
   "id: composer" = "by Ryan Lerman & Theo Katzman"
