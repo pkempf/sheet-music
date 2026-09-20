@@ -6,6 +6,10 @@
 D = \tweak Stem.direction #DOWN \etc
 U = \tweak Stem.direction #UP \etc
 
+tripletNoBracket =
+#(define-music-function (music) (ly:music?)
+   #{ \tweak TupletBracket.stencil ##f \tuplet 3/2 { $music } #})
+
 
 \header {
   title = \markup \normal-text \normalsize \fontsize #9.276 \bold \italic \typewriter
@@ -24,7 +28,7 @@ U = \tweak Stem.direction #UP \etc
   "id: encoding-date" = "2026-09-20"
   "id: source" = "https://flat.io/score/67bb6f3ef4495863ae21c635-lonely-town"
 }
-#(set-global-staff-size 19.916929133858268)
+#(set-global-staff-size 19)
 \paper {
   paper-width = 21.59\cm
   paper-height = 27.94\cm
@@ -44,998 +48,557 @@ U = \tweak Stem.direction #UP \etc
     \Score
     autoBeaming = ##f
   }
+  \context {
+    \Lyrics
+    \override LyricText.font-size = #-0.757
+  }
 }
 PartPOneVoiceOne = \relative f' {
-  \clef "treble" \numericTimeSignature \time 4/4 \key bes \major \tweak
-  direction #UP \tempo \markup \normal-text \concat { \normal-text \smaller {
-      \fontsize #-2 \rhythm { 4 } \char ##x2009 = \char ##x2009 100 } } \U f16 [
-  \U e16 \U f16 \U g16 ] \U f8 ^\markup \italic "Playful, jaunty" r8 \U f16 [ \U
-  e16 \U f16 \U g16 ] \U f8 r8 | % 1
-  \U f16 [ \U f8 \U f16 ] \U g8 [ \U gis8 ] \U a8 r8 r4 | % 2
-  r8 ^\markup \bold \italic "Verse 1" \U bes8 r8 \U bes8 r8 \U bes8 r8 \U bes8
-  \break | % 3
-  r8 \U bes8 r8 \U bes8 r8 \U bes8 r8 \U as8 | % 4
-  \U g4 r8 \U g8 r8 \U g8 r8 \U bes8 | % 5
-  r8 \U bes8 r8 \U bes8 r8 \U bes8 r8 \U bes8 | % 6
-  \U a4 r8 \U c8 r8 \U a8 r8 \U a8 \break | % 7
-  \U a4 \U a8 [ \U a8 ] \U a8 \U a4 \U bes8 ~ | % 8
-  \U bes4. \U f8 ~ \U f4. \U f8 ~ | % 9
+  \clef "treble" \numericTimeSignature \time 4/4 \key bes \major \tweak direction #UP \tempo \markup \normal-text \concat { \normal-text \smaller { \fontsize #-2 \rhythm { 4 } \char ##x2009 = \char ##x2009 100 } } f16 [ e16 f16 g16 ] f8 ^\markup \italic "Playful, jaunty" r8 f16 [ e16 f16 g16 ] f8 r8 | % 1
+  f16 [ f8 f16 ] g8 [ gis8 ] a8 r8 r4 | % 2
+  r8 ^\markup \bold \italic "Verse 1" bes8 r8 bes8 r8 bes8 r8 bes8 \break | % 3
+  r8 bes8 r8 bes8 r8 bes8 r8 as8 | % 4
+  g4 r8 g8 r8 g8 r8 bes8 | % 5
+  r8 bes8 r8 bes8 r8 bes8 r8 bes8 | % 6
+  a4 r8 c8 r8 a8 r8 a8 \break | % 7
+  a4 a8 [ a8 ] a8 a4 bes8 ~ | % 8
+  bes4. f8 ~ f4. f8 ~ | % 9
 
   \barNumberCheck #10
-  \U f2 ~ \U f8 r8 \U f8 [ \U f8 ] | % 10
-  \U bes8 [ \U bes8 ] \U bes8 [ \U bes8 ~ ] \U bes4. r8 \pageBreak | % 11
-  \U a8 [ \U a8 ] \U a8 [ \U a8 ~ ] \U a8 [ \U a8 ] \U a4 | % 12
-  \U c8 [ \U bes8 ] \U a8 [ \U a8 ~ ] \U a8 \U fis4 \U g8 ~ | % 13
-  \U g2 r4 r4 | % 14
-  r8 \U bes8 r8 \U bes8 r8 \U bes8 r8 \U bes8 \break | % 15
-  \U a2. r4 | % 16
-  r8 \U f8 r8 \U f8 r8 \U f8 r8 \U as8 | % 17
-  \U a?8 r8 \U a4 -\bendAfter #-4 r4 \U es8 [ \U es8 ] | % 18
-  \U f8 [ ^\markup \bold \italic "Verse 2" \U bes8 ] \U bes8 [ \U f8 ~ ] \U f8 [
-  \U bes8 ] \U bes4 \break | % 19
+  f2 ~ f8 r8 f8 [ f8 ] | % 10
+  bes8 [ bes8 ] bes8 [ bes8 ~ ] bes4. r8 \pageBreak | % 11
+  a8 [ a8 ] a8 [ a8 ~ ] a8 [ a8 ] a4 | % 12
+  c8 [ bes8 ] a8 [ a8 ~ ] a8 fis4 g8 ~ | % 13
+  g2 r4 r4 | % 14
+  r8 bes8 r8 bes8 r8 bes8 r8 bes8 \break | % 15
+  a2. r4 | % 16
+  r8 f8 r8 f8 r8 f8 r8 as8 | % 17
+  a?8 r8 a4 -\bendAfter #-4 r4 es8 [ es8 ] | % 18
+  f8 [ ^\markup \bold \italic "Verse 2" bes8 ] bes8 [ f8 ~ ] f8 [ bes8 ] bes4 \break | % 19
 
   \barNumberCheck #20
-  \U bes8 [ \U bes8 ] \U bes8 [ \U c8 ] \U bes4 \U as4 | % 20
-  \U g4 \U g8 [ \U g8 ] \U bes8 \U bes4 \U bes8 ~ | % 21
-  \U bes4. r8 \U es,8 [ \U f8 ] \U g8 [ \U bes8 ] | % 22
-  \U a8 [ \U a8 ] \U a8 [ \U c8 ~ ] \U c8 [ \U bes8 ] \U a4 \break | % 23
-  \U a4 \U a8 [ \U a8 ] \U a8 \U a4 \U bes8 ~ | % 24
-  \U bes4. \U f8 ~ \U f4. \U f8 ~ | % 25
-  \U f2 ~ \U f8 r8 \U f8 [ \U f8 ] \pageBreak | % 26
-  \U g8 [ \U g8 ] \U g8 [ \U bes8 ~ ] \U bes8 \U bes4 \U bes8 | % 27
-  \U a8 [ \U a8 ] \U a8 [ \U a8 ~ ] \U a8 [ \U a8 ] \U a4 | % 28
-  \U c8 [ \U bes8 ] \U a8 [ \U a8 ~ ] \U a8 \U fis4 \U g8 ~ | % 29
+  bes8 [ bes8 ] bes8 [ c8 ] bes4 as4 | % 20
+  g4 g8 [ g8 ] bes8 bes4 bes8 ~ | % 21
+  bes4. r8 es,8 [ f8 ] g8 [ bes8 ] | % 22
+  a8 [ a8 ] a8 [ c8 ~ ] c8 [ bes8 ] a4 \break | % 23
+  a4 a8 [ a8 ] a8 a4 bes8 ~ | % 24
+  bes4. f8 ~ f4. f8 ~ | % 25
+  f2 ~ f8 r8 f8 [ f8 ] \pageBreak | % 26
+  g8 [ g8 ] g8 [ bes8 ~ ] bes8 bes4 bes8 | % 27
+  a8 [ a8 ] a8 [ a8 ~ ] a8 [ a8 ] a4 | % 28
+  c8 [ bes8 ] a8 [ a8 ~ ] a8 fis4 g8 ~ | % 29
 
   \barNumberCheck #30
-  \U g2 r8 \U g8 \U g8 [ \U g8 ] \break | % 30
-  \U bes8 [ \U bes8 ] \U bes8 [ \U bes8 ~ ] \U bes8 [ \U bes8 ] \U bes4 ( | % 31
-  \U a4 ) \U a8 [ \U a8 ] \U a8 \U a4 \U bes8 ~ | % 32
-  \U bes8 \U bes8 r8 \U bes8 r8 \U bes8 r8 \U bes8 | % 33
-  \U a8 r8 \U f16 [ \U e16 \U f16 \U g16 ] \U f8 r8 \tweak style #'dashed-line
-  ^\startTextSpan \U f4 \stopTextSpan \break | % 34
-  \U d8 [ ^\markup \bold \italic "Bridge A" \U f8 ] \U bes8 [ \U g8 ~ ] \U g8 [
-  \U bes8 ] \U d4 | % 35
-  \U g,8 [ \U g8 ~ ] \U g2 r4 | % 36
-  r4 \U g4 \U g4 \U bes8 [ \U g8 ( ] | % 37
-  \U f8 ) [ \U d'16 \U cis16 ] \U d8 [ \U bes16 \U a16 ] \U bes8 [ \U f16 \U e?16
-  ] \U f8 [ \U f8 ] \break | % 38
-  \U d8 [ \U f8 ] \U bes8 [ \U g8 ~ ] \U g8 \U bes4 \U g8 | % 39
+  g2 r8 g8 g8 [ g8 ] \break | % 30
+  bes8 [ bes8 ] bes8 [ bes8 ~ ] bes8 [ bes8 ] bes4 ( | % 31
+  a4 ) a8 [ a8 ] a8 a4 bes8 ~ | % 32
+  bes8 bes8 r8 bes8 r8 bes8 r8 bes8 | % 33
+  a8 r8 f16 [ e16 f16 g16 ] f8 r8 \tweak style #'dashed-line ^\startTextSpan f4 \stopTextSpan \break | % 34
+  d8 [ ^\markup \bold \italic "Bridge A" f8 ] bes8 [ g8 ~ ] g8 [ bes8 ] d4 | % 35
+  g,8 [ g8 ~ ] g2 r4 | % 36
+  r4 g4 g4 bes8 [ g8 ( ] | % 37
+  f8 ) [ d'16 cis16 ] d8 [ bes16 a16 ] bes8 [ f16 e?16 ] f8 [ f8 ] \break | % 38
+  d8 [ f8 ] bes8 [ g8 ~ ] g8 bes4 g8 | % 39
 
   \barNumberCheck #40
-  \U d'8 [ \U d8 ] \U c8 [ \U d8 ~ ] \U d8 [ \U g,8 ] \U bes8 [ \U g8 ] | % 40
-  r4 \U d'4 \U d4 \U f,8 [ \U c'8 ] | % 41
-  \U bes4. \U c16 [ \U des16 ] \U d4. r8 \pageBreak | % 42
-  \U d8 ^\markup \bold \italic "Bridge B" \U d4 \U d8 ~ \U d8 \U d4 \U d8 ~ | % 43
-  \U d4 ~ \tweak TupletBracket.stencil ##f \tuplet 3/2 {
-    \U d8 [ \U c8 \U bes8 ] }
-  \U a8 ( \U g4. ) | % 44
-  \U ges4 \U as4 \U bes4 \U c8 [ \U d16 ( \U es16 ] | % 45
-  \U d2. ) r8 \U bes8 \break | % 46
-  \U d8 \U d4 \U d8 ~ \U d8 \U d4 \U d8 ~ | % 47
-  \U d4 ~ \tweak TupletBracket.stencil ##f \tuplet 3/2 {
-    \U d8 [ \U c8 \U bes8 ] }
-  \U a8 ( \after 8 \tweak style #'dashed-line ^\startTextSpan \U g4. ) | % 48
-  \U g4 \U g8 [ \U g8 ~ ] \U g8 \U bes4 \U a8 ~ | % 49
+  d'8 [ d8 ] c8 [ d8 ~ ] d8 [ g,8 ] bes8 [ g8 ] | % 40
+  r4 d'4 d4 f,8 [ c'8 ] | % 41
+  bes4. c16 [ des16 ] d4. r8 \pageBreak | % 42
+  d8 ^\markup \bold \italic "Bridge B" d4 d8 ~ d8 d4 d8 ~ | % 43
+  d4 ~ \tripletNoBracket { d8 [ c8 bes8 ] } a8 ( g4. ) | % 44
+  ges4 as4 bes4 c8 [ d16 ( es16 ] | % 45
+  d2. ) r8 bes8 \break | % 46
+  d8 d4 d8 ~ d8 d4 d8 ~ | % 47
+  d4 ~ \tripletNoBracket { d8 [ c8 bes8 ] } a8 ( \after 8 \tweak style #'dashed-line ^\startTextSpan g4. ) | % 48
+  g4 g8 [ g8 ~ ] g8 bes4 a8 ~ | % 49
 
   \barNumberCheck #50
-  \U a2 r2 \break | % 50
-  r8 ^\markup \bold \italic "Verse 3" \U bes8 r8 \U bes8 r8 \U bes8 r8 \U bes8 | % 51
-  r8 \U bes8 r8 \U bes8 r8 \U bes8 r8 \U as8 | % 52
-  \U g4 r8 \U g8 r8 \U g8 r8 \U bes8 | % 53
-  r8 \U bes8 r8 \U bes8 r8 \U bes8 r8 \U bes8 \break | % 54
-  \U a4 r8 \U c8 r8 \U a8 r8 \U a8 | % 55
-  \U a4 \U a4 \U a4 \U a8 [ \U bes8 ~ ] | % 56
-  \U bes4. \U f8 ~ \U f4. \U f8 ~ | % 57
-  \U f2 ~ \U f8 r8 \U f8 [ \U f8 ] \pageBreak | % 58
-  \U g8 [ \U g8 ] \U g8 [ \U bes8 ~ ] \U bes4. \U bes8 | % 59
+  a2 r2 \break | % 50
+  r8 ^\markup \bold \italic "Verse 3" bes8 r8 bes8 r8 bes8 r8 bes8 | % 51
+  r8 bes8 r8 bes8 r8 bes8 r8 as8 | % 52
+  g4 r8 g8 r8 g8 r8 bes8 | % 53
+  r8 bes8 r8 bes8 r8 bes8 r8 bes8 \break | % 54
+  a4 r8 c8 r8 a8 r8 a8 | % 55
+  a4 a4 a4 a8 [ bes8 ~ ] | % 56
+  bes4. f8 ~ f4. f8 ~ | % 57
+  f2 ~ f8 r8 f8 [ f8 ] \pageBreak | % 58
+  g8 [ g8 ] g8 [ bes8 ~ ] bes4. bes8 | % 59
 
   \barNumberCheck #60
-  \U a8 [ \U a8 ] \U a8 [ \U a8 ~ ] \U a8 [ \U a8 ] \U a4 | % 60
-  \U c8 [ \U bes8 ] \U a8 [ \U a8 ~ ] \U a8 [ \U g8 \U fis8 \U g8 ~ ] | % 61
-  \U g8 \U fis4 \U f8 ~ \U f8 [ \U f8 ] \U e8 [ \U f8 ] \break | % 62
-  \U es8 [ \U f8 ] \U es8 [ \U bes'8 ~ ] \U bes8 [ \U g8 ] \U g8 [ \U g8 ] | % 63
-  \U a4 \U a8 [ \U bes8 ] \U a8 \U f4 \U f8 ( | % 64
-  \U es8 ) [ \U f8 ] \U es8 [ \U bes'8 ] \U bes8 [ \U g8 ] \U g4 ( | % 65
-  \U a4 ) \U a8 [ \U bes8 ] \U a8 \U f4 r8 \break | % 66
-  \U es8 [ \U f8 ] \U es8 [ \U bes'8 ~ ] \U bes8 \U bes4 \U a8 ~ | % 67
-  \U a4 \U a8 [ \U bes8 ] \U a8 \U fis4 \U g8 ~ ^\markup \bold \italic Tag | % 68
-  \U g4 \U g8 [ \U g8 ] \U ges8 [ \U ges8 ] \U ges8 [ \U g8 ~ ] | % 69
+  a8 [ a8 ] a8 [ a8 ~ ] a8 [ a8 ] a4 | % 60
+  c8 [ bes8 ] a8 [ a8 ~ ] a8 [ g8 fis8 g8 ~ ] | % 61
+  g8 fis4 f8 ~ f8 [ f8 ] e8 [ f8 ] \break | % 62
+  es8 [ f8 ] es8 [ bes'8 ~ ] bes8 [ g8 ] g8 [ g8 ] | % 63
+  a4 a8 [ bes8 ] a8 f4 f8 ( | % 64
+  es8 ) [ f8 ] es8 [ bes'8 ] bes8 [ g8 ] g4 ( | % 65
+  a4 ) a8 [ bes8 ] a8 f4 r8 \break | % 66
+  es8 [ f8 ] es8 [ bes'8 ~ ] bes8 bes4 a8 ~ | % 67
+  a4 a8 [ bes8 ] a8 fis4 g8 ~ ^\markup \bold \italic Tag | % 68
+  g4 g8 [ g8 ] ges8 [ ges8 ] ges8 [ g8 ~ ] | % 69
 
   \barNumberCheck #70
-  \U g4 \U g8 [ \U g8 ~ ] \U g4 \U g8 [ \U g8 ] \break | % 70
-  \U es8 [ \U f8 ] \U ges8 [ \tweak style #'dashed-line \tweak
-  bound-details.left.text \markup \normal-text "rit." ^\startTextSpan \U as8 ]
-  \U bes8 \stopTextSpan \U c4 \U d8 ~ | % 71
-  \U d2. r4 \bar "|."
+  g4 g8 [ g8 ~ ] g4 g8 [ g8 ] \break | % 70
+  es8 [ f8 ] ges8 [ \tweak style #'dashed-line \tweak bound-details.left.text \markup \normal-text "rit." ^\startTextSpan as8 ] bes8 \stopTextSpan c4 d8 ~ | % 71
+  d2. r4 \bar "|."
+
 }
 
 PartPOneVoiceOneLyricsOne = \lyricmode {
   \set ignoreMelismata = ##t
   \set includeGraceNotes = ##t
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \markup \fontsize #-0.757 doot \markup
-  \fontsize #-0.757 doot \markup \fontsize #-0.757 doot \markup \fontsize
-  #-0.757 doot \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \markup \fontsize #-0.757 doot \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \markup \fontsize #-0.757 doot \markup \fontsize #-0.757 doot \markup
-  \fontsize #-0.757 doot \markup \fontsize #-0.757 doo \markup \fontsize #-0.757
-  doo \markup \fontsize #-0.757 doot \markup \fontsize #-0.757 doot \markup
-  \fontsize #-0.757 doot \markup \fontsize #-0.757 ba \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \markup \fontsize #-0.757 "he's" \markup \fontsize #-0.757 there
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \markup \fontsize #-0.757 You
-  \markup \fontsize #-0.757 can \markup \fontsize #-0.757 hear \markup \fontsize
-  #-0.757 him \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \markup \fontsize
-  #-0.757 "loud," \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \markup
-  \fontsize #-0.757 doot \markup \fontsize #-0.757 doot \markup \fontsize
-  #-0.757 doot \markup \fontsize #-0.757 doo \markup \fontsize #-0.757 dm \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \markup \fontsize #-0.757 you \markup
-  \fontsize #-0.757 want \markup \fontsize #-0.757 to \markup \fontsize #-0.757
-  go __ \skip1 \markup \fontsize #-0.757 to \markup \fontsize #-0.757 Lone --
-  \markup \fontsize #-0.757 ly \markup \fontsize #-0.757 "Town," __ \skip1
-  \markup \fontsize #-0.757 just \markup \fontsize #-0.757 pay \markup \fontsize
-  #-0.757 the \markup \fontsize #-0.757 "fare!" \skip1 \markup \fontsize #-0.757
-  "(da" \markup \fontsize #-0.757 ba \markup \fontsize #-0.757 "da," \markup
-  \fontsize #-0.757 da \markup \fontsize #-0.757 ba \markup \fontsize #-0.757
-  "da," \markup \fontsize #-0.757 da \skip1 \markup \fontsize #-0.757 "da!)"
-  \markup \fontsize #-0.757 Un -- \markup \fontsize #-0.757 less \markup
-  \fontsize #-0.757 "you're" \markup \fontsize #-0.757 with \markup \fontsize
-  #-0.757 "me," __ \skip1 \markup \fontsize #-0.757 then \markup \fontsize
-  #-0.757 "you'll" \markup \fontsize #-0.757 get \markup \fontsize #-0.757 in
-  \markup \fontsize #-0.757 for \markup \fontsize #-0.757 "free," __ \skip1
-  \markup \fontsize #-0.757 "'cause" \markup \fontsize #-0.757 ba -- \markup
-  \fontsize #-0.757 by \markup \fontsize #-0.757 I \markup \fontsize #-0.757
-  know \markup \fontsize #-0.757 the \markup \fontsize #-0.757 may -- \markup
-  \fontsize #-0.757 "or!" \markup \fontsize #-0.757 Da \markup \fontsize #-0.757
-  ba \markup \fontsize #-0.757 da \markup \fontsize #-0.757 No \markup \fontsize
-  #-0.757 one \markup \fontsize #-0.757 seems __ \skip1 \markup \fontsize
-  #-0.757 to \markup \fontsize #-0.757 want __ \skip1 \skip1 \markup \fontsize
-  #-0.757 to \markup \fontsize #-0.757 be \markup \fontsize #-0.757 near __
-  \skip1 \markup \fontsize #-0.757 They \markup \fontsize #-0.757 all \markup
-  \fontsize #-0.757 run \markup \fontsize #-0.757 a -- \markup \fontsize #-0.757
-  way __ \skip1 \skip1 \skip1 \markup \fontsize #-0.757 deep \markup \fontsize
-  #-0.757 in -- \markup \fontsize #-0.757 "side," __ \skip1 \markup \fontsize
-  #-0.757 a \markup \fontsize #-0.757 song __ \skip1 \skip1 \markup \fontsize
-  #-0.757 you \markup \fontsize #-0.757 can \markup \fontsize #-0.757 hear __
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \markup \fontsize #-0.757 doot \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \markup \fontsize #-0.757 ground __ \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \markup \fontsize #-0.757
-  "He's" \markup \fontsize #-0.757 the \markup \fontsize #-0.757 may -- \markup
-  \fontsize #-0.757 or \markup \fontsize #-0.757 of \markup \fontsize #-0.757
-  Lone __ \skip1 \markup \fontsize #-0.757 ly \markup \fontsize #-0.757 Town __
-  \skip1 \markup \fontsize #-0.757 with \markup \fontsize #-0.757 a \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
+  \repeat unfold 16 \skip1 doot doot doot doot \repeat unfold 13 \skip1 doot
+  \repeat unfold 36 \skip1 doot doot doot doo doo doot doot doot ba \repeat
+  unfold 16 \skip1 "he's" there \repeat unfold 6 \skip1 You can hear him
+  \repeat unfold 7 \skip1 "loud," \repeat unfold 52 \skip1 doot doot doot doo
+  dm \repeat unfold 6 \skip1 you want to go __ \skip1 to Lone -- ly "Town," __
+  \skip1 just pay the "fare!" \skip1 "(da" ba "da," da ba "da," da \skip1
+  "da!)" Un -- less "you're" with "me," __ \skip1 then "you'll" get in for
+  "free," __ \skip1 "'cause" ba -- by I know the may -- "or!" Da ba da No one
+  seems __ \skip1 to want __ \repeat unfold 2 \skip1 to be near __ \skip1 They
+  all run a -- way __ \repeat unfold 3 \skip1 deep in -- "side," __ \skip1 a
+  song __ \repeat unfold 2 \skip1 you can hear __ \repeat unfold 25 \skip1
+  doot \repeat unfold 63 \skip1 ground __ \repeat unfold 19 \skip1 "He's" the
+  may -- or of Lone __ \skip1 ly Town __ \skip1 with a \repeat unfold 8 \skip1
+
 }
 
 PartPOneVoiceOneLyricsThree = \lyricmode {
   \set ignoreMelismata = ##t
   \set includeGraceNotes = ##t
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \markup
-  \fontsize #-0.757 doot \markup \fontsize #-0.757 doot \markup \fontsize
-  #-0.757 doot \markup \fontsize #-0.757 doo \markup \fontsize #-0.757 doo
-  \markup \fontsize #-0.757 doot \markup \fontsize #-0.757 doot \markup
-  \fontsize #-0.757 doot \markup \fontsize #-0.757 doot \markup \fontsize
-  #-0.757 doot \markup \fontsize #-0.757 doot \markup \fontsize #-0.757 doo
-  \markup \fontsize #-0.757 doo \skip1 \markup \fontsize #-0.757 doot \markup
-  \fontsize #-0.757 doo \markup \fontsize #-0.757 doo \markup \fontsize #-0.757
-  sta -- \markup \fontsize #-0.757 ring \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1
+  \repeat unfold 20 \skip1 doot doot doot doo doo doot doot doot doot doot
+  doot doo doo \skip1 doot doo doo sta -- ring \repeat unfold 347 \skip1
+
 }
 
 PartPOneVoiceOneLyricsTwo = \lyricmode {
   \set ignoreMelismata = ##t
   \set includeGraceNotes = ##t
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 a -- way
-  __ \skip1 \skip1 \markup \fontsize #-0.757 But \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \markup \fontsize #-0.757 doot \markup \fontsize
-  #-0.757 doot \markup \fontsize #-0.757 doot \markup \fontsize #-0.757 doot
-  \markup \fontsize #-0.757 doot \markup \fontsize #-0.757 doot \markup
-  \fontsize #-0.757 doot \markup \fontsize #-0.757 doo \markup \fontsize #-0.757
-  doo \markup \fontsize #-0.757 doot \markup \fontsize #-0.757 doot \markup
-  \fontsize #-0.757 doot \markup \fontsize #-0.757 doot \markup \fontsize
-  #-0.757 doot \markup \fontsize #-0.757 doot \markup \fontsize #-0.757 doo
-  \markup \fontsize #-0.757 doo \skip1 \markup \fontsize #-0.757 doot \markup
-  \fontsize #-0.757 doo \markup \fontsize #-0.757 dm \markup \fontsize #-0.757
-  and \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \markup \fontsize
-  #-0.757 no \markup \fontsize #-0.757 it \markup \fontsize #-0.757 "ain’t" __
-  \skip1 \markup \fontsize #-0.757 no \markup \fontsize #-0.757 "fun!" __ \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \markup
-  \fontsize #-0.757 Lone -- \markup \fontsize #-0.757 ly \markup \fontsize
-  #-0.757 "Town," \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
+  \repeat unfold 241 \skip1 a -- way __ \repeat unfold 2 \skip1 But \repeat
+  unfold 19 \skip1 doot doot doot doot doot doot doot doo doo doot doot doot
+  doot doot doot doo doo \skip1 doot doo dm and \repeat unfold 29 \skip1 no it
+  "ain't" __ \skip1 no "fun!" __ \repeat unfold 10 \skip1 Lone -- ly "Town,"
+  \repeat unfold 51 \skip1
+
 }
 
 PartPOneVoiceTwo = \relative f' {
-  \clef "treble" \numericTimeSignature \time 4/4 \key bes \major \D f16 [ \D e16
-  \D f16 \D g16 ] \D f8 r8 \D f16 [ \D e16 \D f16 \D g16 ] \D f8 r8 | % 1
-  \D es?16 [ \D es8 \D es16 ] \D es8 [ \D es8 ] \D es8 r8 \D f8 [ \D f8 ] | % 2
-  \D d8 [ \D f8 ] \D d8 [ \D a'8 ~ ] \D a8 [ \D g?8 ] \D d4 \break | % 3
-  \D d8 [ \D f8 ] \D g8 [ \D a8 ] \D d,2 | % 4
-  r4 \D c8 [ \D bes8 ] \D c8 \D bes4 \D g8 ~ | % 5
-  \D g2 r4 r4 | % 6
-  \D c8 [ \D d8 ] \D es8 [ \D a8 ] \D a8 [ \D g8 ] \D es4 \break | % 7
-  r4 \D f8 [ \D d8 ] \D f8 \D g4 \D d8 ~ | % 8
-  \D d4. \D d8 ~ \D d4. \D d8 ~ | % 9
+  \clef "treble" \numericTimeSignature \time 4/4 \key bes \major f16 [ e16 f16 g16 ] f8 r8 f16 [ e16 f16 g16 ] f8 r8 | % 1
+  es?16 [ es8 es16 ] es8 [ es8 ] es8 r8 f8 [ f8 ] | % 2
+  d8 [ f8 ] d8 [ a'8 ~ ] a8 [ g?8 ] d4 \break | % 3
+  d8 [ f8 ] g8 [ a8 ] d,2 | % 4
+  r4 c8 [ bes8 ] c8 bes4 g8 ~ | % 5
+  g2 r4 r4 | % 6
+  c8 [ d8 ] es8 [ a8 ] a8 [ g8 ] es4 \break | % 7
+  r4 f8 [ d8 ] f8 g4 d8 ~ | % 8
+  d4. d8 ~ d4. d8 ~ | % 9
 
   \barNumberCheck #10
-  \D d2 ~ \D d8 r8 \D g,8 [ \D bes8 ] | % 10
-  \D c8 [ \D d8 ] \D c8 [ \D f8 ~ ] \D f4. \D d8 \pageBreak | % 11
-  \D c8 [ \D d8 ] \D c8 [ \D f8 ~ ] \D f8 [ \D d8 ] \D f4 | % 12
-  \D a8 [ \D g8 ] \D f8 [ \D d8 ~ ] \D d8 \D c4 \D b8 ~ | % 13
-  \D b2 r8 \D g8 \D bes8 [ \D b8 ] | % 14
-  \D c8 [ \D d8 ] \D c8 [ \D f8 ~ ] \D f8 [ \D d8 ] \D c4 \break | % 15
-  r4 \D c8 [ \D d8 ] \D f8 \D d4 \D g,8 ~ | % 16
-  \D g8 r8 r4 r4 r8 \D d'8 | % 17
-  \D f8 r8 \D f4 -\bendAfter #-4 r4 \D bes,8 [ \D c8 ] | % 18
-  \D d8 [ \D f8 ] \D d8 [ \D a'8 ~ ] \D a8 [ \D g8 ] \D d4 \break | % 19
+  d2 ~ d8 r8 g,8 [ bes8 ] | % 10
+  c8 [ d8 ] c8 [ f8 ~ ] f4. d8 \pageBreak | % 11
+  c8 [ d8 ] c8 [ f8 ~ ] f8 [ d8 ] f4 | % 12
+  a8 [ g8 ] f8 [ d8 ~ ] d8 c4 b8 ~ | % 13
+  b2 r8 g8 bes8 [ b8 ] | % 14
+  c8 [ d8 ] c8 [ f8 ~ ] f8 [ d8 ] c4 \break | % 15
+  r4 c8 [ d8 ] f8 d4 g,8 ~ | % 16
+  g8 r8 r4 r4 r8 d'8 | % 17
+  f8 r8 f4 -\bendAfter #-4 r4 bes,8 [ c8 ] | % 18
+  d8 [ f8 ] d8 [ a'8 ~ ] a8 [ g8 ] d4 \break | % 19
 
   \barNumberCheck #20
-  \D d8 [ \D f8 ] \D g8 [ \D a8 ] \D d,2 | % 20
-  r4 \D c8 [ \D bes8 ] \D c8 \D bes4 \D g8 ~ | % 21
-  \D g2. r4 | % 22
-  \D c8 [ \D d8 ] \D es8 [ \D a8 ~ ] \D a8 [ \D g8 ] \D es4 \break | % 23
-  r4 \D f8 [ \D d8 ] \D f8 \D g4 \D d8 ~ | % 24
-  \D d4. \D d8 ~ \D d4. \D d8 ~ | % 25
-  \D d2 ~ \D d8 r8 \D d8 [ \D b8 ] \pageBreak | % 26
-  \D c8 [ \D d8 ] \D c8 [ \D f8 ~ ] \D f8 \D d4 \D g,8 | % 27
-  \D c8 [ \D d8 ] \D c8 [ \D f8 ~ ] \D f8 [ \D d8 ] \D f4 | % 28
-  \D a8 [ \D g8 ] \D f8 [ \D d8 ~ ] \D d8 \D c4 \D b8 ~ | % 29
+  d8 [ f8 ] g8 [ a8 ] d,2 | % 20
+  r4 c8 [ bes8 ] c8 bes4 g8 ~ | % 21
+  g2. r4 | % 22
+  c8 [ d8 ] es8 [ a8 ~ ] a8 [ g8 ] es4 \break | % 23
+  r4 f8 [ d8 ] f8 g4 d8 ~ | % 24
+  d4. d8 ~ d4. d8 ~ | % 25
+  d2 ~ d8 r8 d8 [ b8 ] \pageBreak | % 26
+  c8 [ d8 ] c8 [ f8 ~ ] f8 d4 g,8 | % 27
+  c8 [ d8 ] c8 [ f8 ~ ] f8 [ d8 ] f4 | % 28
+  a8 [ g8 ] f8 [ d8 ~ ] d8 c4 b8 ~ | % 29
 
   \barNumberCheck #30
-  \D b2 r8 \D g8 \D bes8 [ \D b8 ] \break | % 30
-  \D c8 [ \D d8 ] \D c8 [ \D f8 ~ ] \D f8 [ \D d8 ] \D c4 | % 31
-  r4 \D c8 [ \D d8 ] \D f8 \D d4 \D g,?8 ~ | % 32
+  b2 r8 g8 bes8 [ b8 ] \break | % 30
+  c8 [ d8 ] c8 [ f8 ~ ] f8 [ d8 ] c4 | % 31
+  r4 c8 [ d8 ] f8 d4 g,?8 ~ | % 32
   g1 | % 33
-  r4 \D f'16 [ \D e16 \D f16 \D g16 ] \D f8 r8 \D cis4 \break | % 34
-  \D bes8 [ \D d8 ] \D d8 [ \D d8 ~ ] \D d8 [ \D d8 ] \D e4 | % 35
-  \D e8 [ \D e8 ~ ] \D e2 r4 | % 36
-  \D des4 \D des4 \D des4 \D des8 [ \D bes8 ~ ] | % 37
-  \D bes8 \D bes'16 [ \D a16 ] \D bes8 [ \D f16 \D e16 ] \D f8 [ \D <d f>16 \D
-  cis16 ] \D d8 \D cis?8 \break | % 38
-  \D bes8 [ \D d8 ] \D d8 [ \D d8 ~ ] \D d8 \D d4 \D f8 | % 39
+  r4 f'16 [ e16 f16 g16 ] f8 r8 cis4 \break | % 34
+  bes8 [ d8 ] d8 [ d8 ~ ] d8 [ d8 ] e4 | % 35
+  e8 [ e8 ~ ] e2 r4 | % 36
+  des4 des4 des4 des8 [ bes8 ~ ] | % 37
+  bes8 bes'16 [ a16 ] bes8 [ f16 e16 ] f8 [ <d f>16 cis16 ] d8 cis?8 \break | % 38
+  bes8 [ d8 ] d8 [ d8 ~ ] d8 d4 f8 | % 39
 
   \barNumberCheck #40
-  \D e8 [ \D e8 ] \D e8 [ \D e8 ~ ] \D e8 [ \D e8 ] \D g8 [ \D e8 ] | % 40
-  r4 \D g4 \D f8 [ \D es?8 ] \D es8 [ \D c'8 ] | % 41
-  \D bes4. \D d,8 ~ \D d8 \D c4. \pageBreak | % 42
-  \D f8 \D f4 \D ges8 ~ \D ges8 \D ges4 \D g8 ~ | % 43
-  \D g4 ~ \tweak TupletBracket.stencil ##f \tuplet 3/2 {
-    \D g8 [ \D d8 \D d8 ] }
-  \D d2 | % 44
-  \D des4 \D es4 \D f4 \D ges?8 [ \D f8 ~ ] | % 45
-  \D f4. \D fis8 ~ \D fis16 r16 \D fis4. \break | % 46
-  \D f?8 \D f4 \D ges8 ~ \D ges8 \D ges4 \D g8 ~ | % 47
-  \D g4 ~ \tweak TupletBracket.stencil ##f \tuplet 3/2 {
-    \D g8 [ \D d8 \D d8 ] }
-  \D d2 | % 48
-  \D c8 ( [ \D d8 ) ] \stopTextSpan \D es8 [ \D a8 ~ ] \D a8 \D g4 \D d8 ( | % 49
+  e8 [ e8 ] e8 [ e8 ~ ] e8 [ e8 ] g8 [ e8 ] | % 40
+  r4 g4 f8 [ es?8 ] es8 [ c'8 ] | % 41
+  bes4. d,8 ~ d8 c4. \pageBreak | % 42
+  f8 f4 ges8 ~ ges8 ges4 g8 ~ | % 43
+  g4 ~ \tripletNoBracket { g8 [ d8 d8 ] } d2 | % 44
+  des4 es4 f4 ges?8 [ f8 ~ ] | % 45
+  f4. fis8 ~ fis16 r16 fis4. \break | % 46
+  f?8 f4 ges8 ~ ges8 ges4 g8 ~ | % 47
+  g4 ~ \tripletNoBracket { g8 [ d8 d8 ] } d2 | % 48
+  c8 ( [ d8 ) ] \stopTextSpan es8 [ a8 ~ ] a8 g4 d8 ( | % 49
 
   \barNumberCheck #50
-  \D c?2 ) r4 \D f8 [ \D c8 ] \break | % 50
-  \D d8 [ \D f8 ] \D d8 [ \D a'8 ~ ] \D a8 [ \D g8 ] \D d4 | % 51
-  \D d8 [ \D f8 ] \D g8 [ \D a8 ] \D d,2 | % 52
-  r4 \D c8 [ \D bes8 ] \D c8 \D bes4 \D g8 ~ | % 53
-  \D g2 r4 r4 \break | % 54
-  \D c8 [ \D d8 ] \D es8 [ \D a8 ~ ] \D a8 [ \D g8 ] \D es4 | % 55
-  r4 \D f8 ( [ \D d8 ) ] \D f4 \D g8 [ \D d8 ~ ] | % 56
-  \D d4. \D d8 ~ \D d4. \D d8 ~ | % 57
-  \D d2 ~ \D d8 r8 \D g,8 [ \D bes8 ] \pageBreak | % 58
-  \D c8 [ \D d8 ] \D c8 [ \D f8 ~ ] \D f4. \D g,8 | % 59
+  c?2 ) r4 f8 [ c8 ] \break | % 50
+  d8 [ f8 ] d8 [ a'8 ~ ] a8 [ g8 ] d4 | % 51
+  d8 [ f8 ] g8 [ a8 ] d,2 | % 52
+  r4 c8 [ bes8 ] c8 bes4 g8 ~ | % 53
+  g2 r4 r4 \break | % 54
+  c8 [ d8 ] es8 [ a8 ~ ] a8 [ g8 ] es4 | % 55
+  r4 f8 ( [ d8 ) ] f4 g8 [ d8 ~ ] | % 56
+  d4. d8 ~ d4. d8 ~ | % 57
+  d2 ~ d8 r8 g,8 [ bes8 ] \pageBreak | % 58
+  c8 [ d8 ] c8 [ f8 ~ ] f4. g,8 | % 59
 
   \barNumberCheck #60
-  \D c8 [ \D d8 ] \D c8 [ \D f8 ~ ] \D f8 [ \D d8 ] \D f4 | % 60
-  \D a8 [ \D g8 ] \D f8 [ \D d8 ~ ] \D d8 \D c4 \D bes?8 ~ ( | % 61
-  \D bes4. \D b!8 ~ ) \D b8 [ \D b8 ] \D bes8 [ \D b8 ] \break | % 62
-  \D c8 [ \D d8 ] \D c8 [ \D f8 ~ ] \D f8 [ \D d8 ] \D c4 | % 63
-  r4 \D c8 [ \D d8 ] \D f8 \D d4 \D c8 ~ | % 64
-  \D c8 [ \D d8 \D c8 \D f8 ] \D f8 [ \D d8 ] \D c4 | % 65
-  r4 \D c8 [ \D d8 ] \D f8 \D d4 r8 \break | % 66
-  \D c8 [ \D d8 ] \D c8 [ \D f8 ~ ] \D f8 \D d4 \D c8 ~ | % 67
-  \D c4 \D c8 [ \D d8 ] \D es8 \D d4 \D d8 ~ | % 68
-  \D d4 \D d8 [ \D d8 ] \D d8 [ \D d8 ] \D d8 [ \D d8 ~ ] | % 69
+  c8 [ d8 ] c8 [ f8 ~ ] f8 [ d8 ] f4 | % 60
+  a8 [ g8 ] f8 [ d8 ~ ] d8 c4 bes?8 ~ ( | % 61
+  bes4. b!8 ~ ) b8 [ b8 ] bes8 [ b8 ] \break | % 62
+  c8 [ d8 ] c8 [ f8 ~ ] f8 [ d8 ] c4 | % 63
+  r4 c8 [ d8 ] f8 d4 c8 ~ | % 64
+  c8 [ d8 c8 f8 ] f8 [ d8 ] c4 | % 65
+  r4 c8 [ d8 ] f8 d4 r8 \break | % 66
+  c8 [ d8 ] c8 [ f8 ~ ] f8 d4 c8 ~ | % 67
+  c4 c8 [ d8 ] es8 d4 d8 ~ | % 68
+  d4 d8 [ d8 ] d8 [ d8 ] d8 [ d8 ~ ] | % 69
 
   \barNumberCheck #70
-  \D d4 \D d8 [ \D d8 ~ ] \D d4 \D d8 [ \D d8 ] \break | % 70
-  \D c8 [ \D d8 ] \D c8 [ \D d8 ] \D es8 \D ges?4 \D f8 ~ | % 71
-  \D f2. r4 \bar "|."
+  d4 d8 [ d8 ~ ] d4 d8 [ d8 ] \break | % 70
+  c8 [ d8 ] c8 [ d8 ] es8 ges?4 f8 ~ | % 71
+  f2. r4 \bar "|."
+
 }
 
 PartPOneVoiceTwoLyricsOne = \lyricmode {
   \set ignoreMelismata = ##t
   \set includeGraceNotes = ##t
-  \markup \fontsize #-0.757 Da \markup \fontsize #-0.757 ba \markup \fontsize
-  #-0.757 da \markup \fontsize #-0.757 ba \markup \fontsize #-0.757 da \markup
-  \fontsize #-0.757 da \markup \fontsize #-0.757 ba \markup \fontsize #-0.757 da
-  \markup \fontsize #-0.757 ba \markup \fontsize #-0.757 da \markup \fontsize
-  #-0.757 da \markup \fontsize #-0.757 ba \markup \fontsize #-0.757 ba \markup
-  \fontsize #-0.757 da \markup \fontsize #-0.757 da \markup \fontsize #-0.757 da
-  \markup \fontsize #-0.757 "He’s" \markup \fontsize #-0.757 the \markup
-  \fontsize #-0.757 may -- \markup \fontsize #-0.757 or \markup \fontsize
-  #-0.757 of \markup \fontsize #-0.757 Lone __ \skip1 \markup \fontsize #-0.757
-  ly \markup \fontsize #-0.757 "Town," \markup \fontsize #-0.757 pop -- \markup
-  \fontsize #-0.757 u -- \markup \fontsize #-0.757 la -- \markup \fontsize
-  #-0.757 tion \markup \fontsize #-0.757 "one," \markup \fontsize #-0.757 pop --
-  \markup \fontsize #-0.757 u -- \markup \fontsize #-0.757 la -- \markup
-  \fontsize #-0.757 tion __ \markup \fontsize #-0.757 one __ \skip1 \markup
-  \fontsize #-0.757 Star -- \markup \fontsize #-0.757 ing \markup \fontsize
-  #-0.757 a \markup \fontsize #-0.757 hole \markup \fontsize #-0.757 in \markup
-  \fontsize #-0.757 the \markup \fontsize #-0.757 "ground," \markup \fontsize
-  #-0.757 sta -- \markup \fontsize #-0.757 ring \markup \fontsize #-0.757 at
-  \markup \fontsize #-0.757 the \markup \fontsize #-0.757 "sun," __ \skip1
-  \markup \fontsize #-0.757 "oh," __ \skip1 \markup \fontsize #-0.757 whoa __
-  \skip1 \skip1 \markup \fontsize #-0.757 and \markup \fontsize #-0.757 "I'm"
-  \markup \fontsize #-0.757 start -- \markup \fontsize #-0.757 ing \markup
-  \fontsize #-0.757 to \markup \fontsize #-0.757 feel __ \skip1 \markup
-  \fontsize #-0.757 like \markup \fontsize #-0.757 he \markup \fontsize #-0.757
-  might \markup \fontsize #-0.757 be \markup \fontsize #-0.757 "real," __ \skip1
-  \markup \fontsize #-0.757 like \markup \fontsize #-0.757 "he’s" \markup
-  \fontsize #-0.757 some \markup \fontsize #-0.757 thing \markup \fontsize
-  #-0.757 I \markup \fontsize #-0.757 might __ \skip1 \markup \fontsize #-0.757
-  be -- \markup \fontsize #-0.757 come __ \skip1 \markup \fontsize #-0.757 Run
-  -- \markup \fontsize #-0.757 ning \markup \fontsize #-0.757 for \markup
-  \fontsize #-0.757 may -- \markup \fontsize #-0.757 or \markup \fontsize
-  #-0.757 of \markup \fontsize #-0.757 Lone __ \skip1 \markup \fontsize #-0.757
-  ly \markup \fontsize #-0.757 "Town," \markup \fontsize #-0.757 pop -- \markup
-  \fontsize #-0.757 u -- \markup \fontsize #-0.757 lat -- \markup \fontsize
-  #-0.757 ion __ \markup \fontsize #-0.757 "one." __ \skip1 \markup \fontsize
-  #-0.757 ba \markup \fontsize #-0.757 "dop," \markup \fontsize #-0.757 "bah!"
-  \markup \fontsize #-0.757 See \markup \fontsize #-0.757 the \markup \fontsize
-  #-0.757 may -- \markup \fontsize #-0.757 or \markup \fontsize #-0.757 of
-  \markup \fontsize #-0.757 Lone __ \skip1 \markup \fontsize #-0.757 ly \markup
-  \fontsize #-0.757 Town \markup \fontsize #-0.757 stand -- \markup \fontsize
-  #-0.757 ing \markup \fontsize #-0.757 in \markup \fontsize #-0.757 the \markup
-  \fontsize #-0.757 "square," \markup \fontsize #-0.757 at \markup \fontsize
-  #-0.757 the \markup \fontsize #-0.757 coun -- \markup \fontsize #-0.757 ty
-  \markup \fontsize #-0.757 fair __ \skip1 \markup \fontsize #-0.757 Shout --
-  \markup \fontsize #-0.757 ing \markup \fontsize #-0.757 his \markup \fontsize
-  #-0.757 mess __ \skip1 \markup \fontsize #-0.757 age \markup \fontsize #-0.757
-  out \markup \fontsize #-0.757 but \markup \fontsize #-0.757 "there's" \markup
-  \fontsize #-0.757 no \markup \fontsize #-0.757 one \markup \fontsize #-0.757
-  "there," __ \skip1 \markup \fontsize #-0.757 "oh," __ \skip1 \markup \fontsize
-  #-0.757 there __ \skip1 \skip1 \markup \fontsize #-0.757 And \markup \fontsize
-  #-0.757 the \markup \fontsize #-0.757 si -- \markup \fontsize #-0.757 lence
-  \markup \fontsize #-0.757 sur -- \markup \fontsize #-0.757 "rounds," __ \skip1
-  \markup \fontsize #-0.757 but \markup \fontsize #-0.757 "he's" \markup
-  \fontsize #-0.757 lost \markup \fontsize #-0.757 in \markup \fontsize #-0.757
-  the \markup \fontsize #-0.757 sound __ \skip1 \markup \fontsize #-0.757 of
-  \markup \fontsize #-0.757 their \markup \fontsize #-0.757 ar -- \markup
-  \fontsize #-0.757 my \markup \fontsize #-0.757 of \markup \fontsize #-0.757
-  fifes __ \skip1 \markup \fontsize #-0.757 and \markup \fontsize #-0.757 drums
-  __ \skip1 \markup \fontsize #-0.757 March -- \markup \fontsize #-0.757 ing
-  \markup \fontsize #-0.757 for \markup \fontsize #-0.757 may -- \markup
-  \fontsize #-0.757 or \markup \fontsize #-0.757 of \markup \fontsize #-0.757
-  Lone -- \skip1 \markup \fontsize #-0.757 ly \markup \fontsize #-0.757 "Town,"
-  \markup \fontsize #-0.757 pop -- \markup \fontsize #-0.757 u -- \markup
-  \fontsize #-0.757 lat -- \markup \fontsize #-0.757 ion \markup \fontsize
-  #-0.757 "one." \skip1 \markup \fontsize #-0.757 da \markup \fontsize #-0.757
-  ba \markup \fontsize #-0.757 da \markup \fontsize #-0.757 ba \markup \fontsize
-  #-0.757 da \markup \fontsize #-0.757 If \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \markup \fontsize #-0.757 pay \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \markup \fontsize #-0.757 da __ \skip1 \markup \fontsize #-0.757 "oh,"
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \markup \fontsize #-0.757 "Oh,"
-  \skip1 \markup \fontsize #-0.757 but \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \markup \fontsize #-0.757 Call -- \skip1
-  \markup \fontsize #-0.757 ing \markup \fontsize #-0.757 out __ \skip1 \markup
-  \fontsize #-0.757 your \markup \fontsize #-0.757 name __ \skip1 \markup
-  \fontsize #-0.757 Now \markup \fontsize #-0.757 the \markup \fontsize #-0.757
-  May -- \markup \fontsize #-0.757 or \markup \fontsize #-0.757 of \markup
-  \fontsize #-0.757 Lone -- \skip1 \markup \fontsize #-0.757 ly \markup
-  \fontsize #-0.757 town \markup \fontsize #-0.757 tuck -- \markup \fontsize
-  #-0.757 ing \markup \fontsize #-0.757 in -- \markup \fontsize #-0.757 to
-  \markup \fontsize #-0.757 bed \markup \fontsize #-0.757 "What’s" \markup
-  \fontsize #-0.757 in -- \markup \fontsize #-0.757 side \markup \fontsize
-  #-0.757 his \markup \fontsize #-0.757 head __ \markup \fontsize #-0.757 "?"
-  \markup \fontsize #-0.757 Vis -- \markup \fontsize #-0.757 ions \markup
-  \fontsize #-0.757 of \markup \fontsize #-0.757 su -- \skip1 \markup \fontsize
-  #-0.757 gar \markup \fontsize #-0.757 plums \markup \fontsize #-0.757 and
-  \skip1 \markup \fontsize #-0.757 lone -- \markup \fontsize #-0.757 li --
-  \markup \fontsize #-0.757 ness __ \skip1 \markup \fontsize #-0.757 oh __
-  \skip1 \markup \fontsize #-0.757 yes __ \skip1 \skip1 \markup \fontsize
-  #-0.757 Now \markup \fontsize #-0.757 "we've" \markup \fontsize #-0.757 all
-  \markup \fontsize #-0.757 got \markup \fontsize #-0.757 to \markup \fontsize
-  #-0.757 be __ \skip1 \markup \fontsize #-0.757 What \markup \fontsize #-0.757
-  we \markup \fontsize #-0.757 want \markup \fontsize #-0.757 to \markup
-  \fontsize #-0.757 be __ \skip1 \markup \fontsize #-0.757 but \markup \fontsize
-  #-0.757 that \markup \fontsize #-0.757 Does -- \markup \fontsize #-0.757 "n't"
-  \markup \fontsize #-0.757 seem \markup \fontsize #-0.757 quite __ \skip1
-  \markup \fontsize #-0.757 so \markup \fontsize #-0.757 fun __ \skip1 \skip1
-  \skip1 \markup \fontsize #-0.757 To \markup \fontsize #-0.757 be \markup
-  \fontsize #-0.757 the \markup \fontsize #-0.757 may -- \markup \fontsize
-  #-0.757 or \markup \fontsize #-0.757 of \markup \fontsize #-0.757 Lone __
-  \skip1 \markup \fontsize #-0.757 ly \markup \fontsize #-0.757 "Town," \markup
-  \fontsize #-0.757 pop -- \markup \fontsize #-0.757 u -- \markup \fontsize
-  #-0.757 lat -- \markup \fontsize #-0.757 ion \markup \fontsize #-0.757 Star --
-  \skip1 \markup \fontsize #-0.757 "in’" \markup \fontsize #-0.757 a \markup
-  \fontsize #-0.757 hole \markup \fontsize #-0.757 in \markup \fontsize #-0.757
-  the \markup \fontsize #-0.757 ground \markup \fontsize #-0.757 pop -- \markup
-  \fontsize #-0.757 u -- \markup \fontsize #-0.757 la -- \markup \fontsize
-  #-0.757 "tion," \markup \fontsize #-0.757 May \markup \fontsize #-0.757 or
-  \markup \fontsize #-0.757 of \markup \fontsize #-0.757 Lone __ \skip1 \markup
-  \fontsize #-0.757 ly \markup \fontsize #-0.757 Town __ \skip1 \markup
-  \fontsize #-0.757 pop -- \markup \fontsize #-0.757 u -- \markup \fontsize
-  #-0.757 la -- \markup \fontsize #-0.757 tion \markup \fontsize #-0.757 one __
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \markup \fontsize #-0.757 lone -- \markup \fontsize #-0.757 ly
-  \markup \fontsize #-0.757 pop -- \markup \fontsize #-0.757 u -- \markup
-  \fontsize #-0.757 lat -- \markup \fontsize #-0.757 ion \markup \fontsize
-  #-0.757 "one." __ \skip1
+  Da ba da ba da da ba da ba da da ba ba da da da "He's" the may -- or of Lone
+  __ \skip1 ly "Town," pop -- u -- la -- tion "one," pop -- u -- la -- tion __
+  one __ \skip1 Star -- ing a hole in the "ground," sta -- ring at the "sun,"
+  __ \skip1 "oh," __ \skip1 whoa __ \repeat unfold 2 \skip1 and "I'm" start --
+  ing to feel __ \skip1 like he might be "real," __ \skip1 like "he's" some
+  thing I might __ \skip1 be -- come __ \skip1 Run -- ning for may -- or of
+  Lone __ \skip1 ly "Town," pop -- u -- lat -- ion __ "one." __ \skip1 ba
+  "dop," "bah!" See the may -- or of Lone __ \skip1 ly Town stand -- ing in
+  the "square," at the coun -- ty fair __ \skip1 Shout -- ing his mess __
+  \skip1 age out but "there's" no one "there," __ \skip1 "oh," __ \skip1 there
+  __ \repeat unfold 2 \skip1 And the si -- lence sur -- "rounds," __ \skip1
+  but "he's" lost in the sound __ \skip1 of their ar -- my of fifes __ \skip1
+  and drums __ \skip1 March -- ing for may -- or of Lone -- \skip1 ly "Town,"
+  pop -- u -- lat -- ion "one." \skip1 da ba da ba da If \repeat unfold 10
+  \skip1 pay \repeat unfold 36 \skip1 da __ \skip1 "oh," \repeat unfold 17
+  \skip1 "Oh," \skip1 but \repeat unfold 11 \skip1 Call -- \skip1 ing out __
+  \skip1 your name __ \skip1 Now the May -- or of Lone -- \skip1 ly town tuck
+  -- ing in -- to bed "What's" in -- side his head __ "?" Vis -- ions of su
+  -- \skip1 gar plums and \skip1 lone -- li -- ness __ \skip1 oh __ \skip1 yes
+  __ \repeat unfold 2 \skip1 Now "we've" all got to be __ \skip1 What we want
+  to be __ \skip1 but that Does -- "n't" seem quite __ \skip1 so fun __
+  \repeat unfold 3 \skip1 To be the may -- or of Lone __ \skip1 ly "Town," pop
+  -- u -- lat -- ion Star -- \skip1 "in'" a hole in the ground pop -- u --
+  la -- "tion," May or of Lone __ \skip1 ly Town __ \skip1 pop -- u -- la --
+  tion one __ \repeat unfold 13 \skip1 lone -- ly pop -- u -- lat -- ion
+  "one." __ \skip1
+
 }
 
 PartPOneVoiceFive = \relative f {
-  \clef "bass" \numericTimeSignature \time 4/4 \key bes \major \U f16 [ \U e16
-  \U f16 \U g16 ] \U f8 r8 \U a16 [ \U g16 \U a16 \U bes16 ] \U a8 r8 | % 1
-  \U c16 [ \U c8 \U c16 ] \U c8 [ \U c8 ] \U c8 r8 r4 | % 2
-  r8 \U d8 r8 \U d8 r8 \U d8 r8 \U d8 \break | % 3
-  r8 \U d8 r8 \U d8 r8 \U f8 r8 \U f8 | % 4
-  \U es4 r8 \U es8 r8 \U es8 r8 \U es8 | % 5
-  r8 \U es8 r8 \U es8 r8 \U f8 r8 \U g8 | % 6
-  \U es4 r8 \U es8 r8 \U es8 r8 \U es8 \break | % 7
-  \U es4 \U es8 [ \U es8 ] \U es8 \U es4 \U f8 ~ | % 8
-  \U f4. \U bes,8 ~ \U bes4. \U b8 ~ | % 9
+  \clef "bass" \numericTimeSignature \time 4/4 \key bes \major f16 [ e16 f16 g16 ] f8 r8 a16 [ g16 a16 bes16 ] a8 r8 | % 1
+  c16 [ c8 c16 ] c8 [ c8 ] c8 r8 r4 | % 2
+  r8 d8 r8 d8 r8 d8 r8 d8 \break | % 3
+  r8 d8 r8 d8 r8 f8 r8 f8 | % 4
+  es4 r8 es8 r8 es8 r8 es8 | % 5
+  r8 es8 r8 es8 r8 f8 r8 g8 | % 6
+  es4 r8 es8 r8 es8 r8 es8 \break | % 7
+  es4 es8 [ es8 ] es8 es4 f8 ~ | % 8
+  f4. bes,8 ~ bes4. b8 ~ | % 9
 
   \barNumberCheck #10
-  \U b2 ~ \U b8 r8 \U d8 [ \U d8 ] | % 10
-  \U es8 [ \U f8 ] \U es8 [ \U es8 ~ ] \U es4. r8 \pageBreak | % 11
-  \U es8 [ \U f8 ] \U es8 [ \U es8 ~ ] \U es8 [ \U d8 ] \U c4 | % 12
-  \U f8 [ \U f8 ] \U c8 [ \U c8 ~ ] \U c8 \U d4 \U d8 ~ | % 13
-  \U d2 r4 r4 | % 14
-  r8 \U es8 r8 \U d8 r8 \U f8 r8 \U es8 \break | % 15
-  \U es2. r4 | % 16
-  r8 \U d8 r8 \U d8 r8 \U d8 r8 \U f8 | % 17
-  \U es8 r8 \U es4 -\bendAfter #-4 r4 \U g,8 [ \U a8 ] | % 18
-  \U bes8 [ \U d8 ] \U f8 [ \U d8 ~ ] \U d8 [ \U d8 ] \U f4 \break | % 19
+  b2 ~ b8 r8 d8 [ d8 ] | % 10
+  es8 [ f8 ] es8 [ es8 ~ ] es4. r8 \pageBreak | % 11
+  es8 [ f8 ] es8 [ es8 ~ ] es8 [ d8 ] c4 | % 12
+  f8 [ f8 ] c8 [ c8 ~ ] c8 d4 d8 ~ | % 13
+  d2 r4 r4 | % 14
+  r8 es8 r8 d8 r8 f8 r8 es8 \break | % 15
+  es2. r4 | % 16
+  r8 d8 r8 d8 r8 d8 r8 f8 | % 17
+  es8 r8 es4 -\bendAfter #-4 r4 g,8 [ a8 ] | % 18
+  bes8 [ d8 ] f8 [ d8 ~ ] d8 [ d8 ] f4 \break | % 19
 
   \barNumberCheck #20
-  \U f8 [ \U d8 ] \U d8 [ \U d8 ] \U f4 \U f4 | % 20
-  \U es4 \U es8 [ \U es8 ] \U es8 \U es4 \U es8 ~ | % 21
-  \U es4. r8 \U g,8 [ \U bes8 ] \U bes8 [ \U d8 ] | % 22
-  \U es8 [ \U f8 ] \U c8 [ \U es8 ~ ] \U es8 [ \U es8 ] \U c4 \break | % 23
-  \U c4 \U c8 [ \U c8 ] \U es8 \U es4 \U f8 ~ | % 24
-  \U f4. \U bes,8 ~ \U bes4. \U b8 ~ | % 25
-  \U b2 ~ \U b8 r8 \U b!8 [ \U d8 ] \pageBreak | % 26
-  \U es8 [ \U f8 ] \U es8 [ \U es8 ~ ] \U es8 \U es4 \U es8 | % 27
-  \U es8 [ \U f8 ] \U es8 [ \U es8 ~ ] \U es8 [ \U d8 ] \U c4 | % 28
-  \U f8 [ \U f8 ] \U c8 [ \U c8 ~ ] \U c8 \U d4 \U d8 ~ | % 29
+  f8 [ d8 ] d8 [ d8 ] f4 f4 | % 20
+  es4 es8 [ es8 ] es8 es4 es8 ~ | % 21
+  es4. r8 g,8 [ bes8 ] bes8 [ d8 ] | % 22
+  es8 [ f8 ] c8 [ es8 ~ ] es8 [ es8 ] c4 \break | % 23
+  c4 c8 [ c8 ] es8 es4 f8 ~ | % 24
+  f4. bes,8 ~ bes4. b8 ~ | % 25
+  b2 ~ b8 r8 b!8 [ d8 ] \pageBreak | % 26
+  es8 [ f8 ] es8 [ es8 ~ ] es8 es4 es8 | % 27
+  es8 [ f8 ] es8 [ es8 ~ ] es8 [ d8 ] c4 | % 28
+  f8 [ f8 ] c8 [ c8 ~ ] c8 d4 d8 ~ | % 29
 
   \barNumberCheck #30
-  \U d2 r8 \U bes8 \U d8 [ \U d8 ] \break | % 30
-  \U es8 [ \U es8 ] \U es8 [ \U d8 ~ ] \U d8 [ \U f8 ] \U es4 ~ | % 31
-  \U es4 \U es8 [ \U f8 ] \U f8 \U f4 \U d8 ~ | % 32
-  \U d8 \U d8 r8 \U d8 r8 \U d8 r8 \U d8 | % 33
-  \U es8 r8 \U f,16 [ \U e16 \U f16 \U g16 ] \U f8 b,8\rest \U g'4 \break | % 34
-  \U f8 [ \U f8 ] \U f8 [ \U f8 ~ ] \U f8 [ \U fis8 ] \U g4 | % 35
-  \U c8 [ \U c8 ~ ] \U c2 r4 | % 36
-  \U bes4 \U bes4 \U bes4 \U bes8 [ \U d8 ~ ] | % 37
-  \U d4 \U d4 \U bes4 \U bes8 [ \U g8 ] \break | % 38
-  \U f8 [ \U f8 ] \U f8 [ \U bes8 ~ ] \U bes8 \U bes4 \U d8 | % 39
+  d2 r8 bes8 d8 [ d8 ] \break | % 30
+  es8 [ es8 ] es8 [ d8 ~ ] d8 [ f8 ] es4 ~ | % 31
+  es4 es8 [ f8 ] f8 f4 d8 ~ | % 32
+  d8 d8 r8 d8 r8 d8 r8 d8 | % 33
+  es8 r8 f,16 [ e16 f16 g16 ] f8 b,8\rest g'4 \break | % 34
+  f8 [ f8 ] f8 [ f8 ~ ] f8 [ fis8 ] g4 | % 35
+  c8 [ c8 ~ ] c2 r4 | % 36
+  bes4 bes4 bes4 bes8 [ d8 ~ ] | % 37
+  d4 d4 bes4 bes8 [ g8 ] \break | % 38
+  f8 [ f8 ] f8 [ bes8 ~ ] bes8 bes4 d8 | % 39
 
   \barNumberCheck #40
-  \U bes8 [ \U bes8 ] \U bes8 [ \U bes8 ~ ] \U bes8 [ \U bes8 ] \U e8 [ \U bes8
-  ] | % 40
-  r4 \U bes4 \U a8 [ \U bes8 ] \U c8 [ \U c8 ] | % 41
-  \U bes8 [ \U d8 \U d8 ] \U fis8 ~ \U fis2 \pageBreak | % 42
-  \U bes,8 \U bes4 \U bes8 ~ \U bes8 \U bes4 \U bes8 ~ | % 43
-  \U bes4 ~ \tweak TupletBracket.stencil ##f \tuplet 3/2 {
-    \U bes8 [ \U a8 \U g?8 ] }
-  \U bes2 | % 44
-  \U bes4 \U c4 \U des4 \U es8 [ \U d8 ~ ] | % 45
-  \U d4. \U c8 ~ \U c16 r16 \U c4. \break | % 46
-  \U bes8 \U bes4 \U bes8 ~ \U bes8 \U bes4 \U bes8 ~ | % 47
-  \U bes4 ~ \tweak TupletBracket.stencil ##f \tuplet 3/2 {
-    \U bes8 [ \U a8 \U g?8 ] }
-  \U bes2 | % 48
-  \U bes4 \U c8 [ \U cis8 ~ ] \U cis8 \U d4 \U f8 \=2( | % 49
+  bes8 [ bes8 ] bes8 [ bes8 ~ ] bes8 [ bes8 ] e8 [ bes8 ] | % 40
+  r4 bes4 a8 [ bes8 ] c8 [ c8 ] | % 41
+  bes8 [ d8 d8 ] fis8 ~ fis2 \pageBreak | % 42
+  bes,8 bes4 bes8 ~ bes8 bes4 bes8 ~ | % 43
+  bes4 ~ \tripletNoBracket { bes8 [ a8 g?8 ] } bes2 | % 44
+  bes4 c4 des4 es8 [ d8 ~ ] | % 45
+  d4. c8 ~ c16 r16 c4. \break | % 46
+  bes8 bes4 bes8 ~ bes8 bes4 bes8 ~ | % 47
+  bes4 ~ \tripletNoBracket { bes8 [ a8 g?8 ] } bes2 | % 48
+  bes4 c8 [ cis8 ~ ] cis8 d4 f8 \=2( | % 49
 
   \barNumberCheck #50
-  \U es2 \=2) r2 \break | % 50
-  r8 \U d8 r8 \U d8 r8 \U d8 r8 \U d8 | % 51
-  r8 \U d8 r8 \U d8 r8 \U f8 r8 \U f8 | % 52
-  \U es4 r8 \U es8 r8 \U es8 r8 \U es8 | % 53
-  r8 \U es8 r8 \U es8 r8 \U f8 r8 \U g8 \break | % 54
-  \U es4 r8 \U es8 r8 \U es8 r8 \U es8 | % 55
-  \U es4 \U es4 \U es4 \U es8 [ \U f8 ~ ] | % 56
-  \U f4. \U bes,8 ~ \U bes4. \U b8 ~ | % 57
-  \U b2 ~ \U b8 r8 \U d8 [ \U d8 ] \pageBreak | % 58
-  \U es8 [ \U f8 ] \U es8 [ \U es8 ~ ] \U es4. \U es8 | % 59
+  es2 \=2) r2 \break | % 50
+  r8 d8 r8 d8 r8 d8 r8 d8 | % 51
+  r8 d8 r8 d8 r8 f8 r8 f8 | % 52
+  es4 r8 es8 r8 es8 r8 es8 | % 53
+  r8 es8 r8 es8 r8 f8 r8 g8 \break | % 54
+  es4 r8 es8 r8 es8 r8 es8 | % 55
+  es4 es4 es4 es8 [ f8 ~ ] | % 56
+  f4. bes,8 ~ bes4. b8 ~ | % 57
+  b2 ~ b8 r8 d8 [ d8 ] \pageBreak | % 58
+  es8 [ f8 ] es8 [ es8 ~ ] es4. es8 | % 59
 
   \barNumberCheck #60
-  \U es8 [ \U f8 ] \U es8 [ \U es8 ~ ] \U es8 [ \U d8 ] \U c4 | % 60
-  \U fis8 [ \U es8 ] \U c8 [ \U c8 ~ ] \U c8 [ \U es8 \U es8 \U d8 ~ ] | % 61
-  \U d8 \U c4 \U d8 ~ \U d8 [ \U d8 ] \U cis8 [ \U d8 ] \break | % 62
-  \U g,8 [ \U g8 ] \U g8 [ \U d'8 ~ ] \U d8 [ \U bes8 ] \U bes8 [ \U d8 ] | % 63
-  \U c4 \U f8 [ \U f8 ] \U c8 \U a4 \U a8 \=2( | % 64
-  \U g8 \=2) [ \U g8 ] \U g8 [ \U d'8 ] \U d8 [ \U bes8 ] \U bes8 \=2( [ \U d8 ]
-  | % 65
-  \U c4 \=2) \U f8 [ \U f8 ] \U c8 \U a4 r8 \break | % 66
-  \U g8 [ \U g8 ] \U g8 [ \U d'8 ~ ] \U d8 \U bes4 \U es8 ~ | % 67
-  \U es4 \U es8 [ \U f8 ] \U d8 \U c4 \U bes8 ~ | % 68
+  es8 [ f8 ] es8 [ es8 ~ ] es8 [ d8 ] c4 | % 60
+  fis8 [ es8 ] c8 [ c8 ~ ] c8 [ es8 es8 d8 ~ ] | % 61
+  d8 c4 d8 ~ d8 [ d8 ] cis8 [ d8 ] \break | % 62
+  g,8 [ g8 ] g8 [ d'8 ~ ] d8 [ bes8 ] bes8 [ d8 ] | % 63
+  c4 f8 [ f8 ] c8 a4 a8 \=2( | % 64
+  g8 \=2) [ g8 ] g8 [ d'8 ] d8 [ bes8 ] bes8 \=2( [ d8 ] | % 65
+  c4 \=2) f8 [ f8 ] c8 a4 r8 \break | % 66
+  g8 [ g8 ] g8 [ d'8 ~ ] d8 bes4 es8 ~ | % 67
+  es4 es8 [ f8 ] d8 c4 bes8 ~ | % 68
   bes1 ~ | % 69
 
   \barNumberCheck #70
   bes1 ~ \break | % 70
   bes1 ~ | % 71
-  \U bes2. r4 \bar "|."
+  bes2. r4 \bar "|."
+
 }
 
 PartPOneVoiceFiveLyricsOne = \lyricmode {
   \set ignoreMelismata = ##t
   \set includeGraceNotes = ##t
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \markup \fontsize #-0.757 doot \markup
-  \fontsize #-0.757 doot \markup \fontsize #-0.757 doot \markup \fontsize
-  #-0.757 doot \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \markup \fontsize
-  #-0.757 doot \markup \fontsize #-0.757 doot \markup \fontsize #-0.757 doot
-  \markup \fontsize #-0.757 doo \markup \fontsize #-0.757 doo \markup \fontsize
-  #-0.757 doot \markup \fontsize #-0.757 doot \markup \fontsize #-0.757 doot
-  \markup \fontsize #-0.757 ba \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \markup
-  \fontsize #-0.757 "he’s" \markup \fontsize #-0.757 there \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \markup \fontsize #-0.757 You \markup \fontsize #-0.757
-  can \markup \fontsize #-0.757 hear \markup \fontsize #-0.757 him \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \markup \fontsize #-0.757 "loud," \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \markup \fontsize #-0.757
-  doot \markup \fontsize #-0.757 doot \markup \fontsize #-0.757 doot \markup
-  \fontsize #-0.757 doo \markup \fontsize #-0.757 dm \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \markup \fontsize #-0.757 the
-  \markup \fontsize #-0.757 "fare," \markup \fontsize #-0.757 but \markup
-  \fontsize #-0.757 un \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \markup \fontsize #-0.757 I
-  \markup \fontsize #-0.757 know \skip1 \skip1 \skip1 \skip1 \markup \fontsize
-  #-0.757 da \markup \fontsize #-0.757 da \markup \fontsize #-0.757 da __ \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \markup \fontsize #-0.757 Lone --
-  \markup \fontsize #-0.757 ly \markup \fontsize #-0.757 "Town," \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \markup
-  \fontsize #-0.757 ground __ \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \markup \fontsize #-0.757 one __ \skip1 \skip1 \skip1 \skip1
+  \repeat unfold 16 \skip1 doot doot doot doot \repeat unfold 50 \skip1 doot
+  doot doot doo doo doot doot doot ba \repeat unfold 16 \skip1 "he's" there
+  \repeat unfold 6 \skip1 You can hear him \repeat unfold 7 \skip1 "loud,"
+  \repeat unfold 52 \skip1 doot doot doot doo dm \repeat unfold 22 \skip1 the
+  "fare," but un \repeat unfold 15 \skip1 I know \repeat unfold 4 \skip1 da da
+  da __ \repeat unfold 95 \skip1 Lone -- ly "Town," \repeat unfold 11 \skip1
+  ground __ \repeat unfold 18 \skip1 one __ \repeat unfold 4 \skip1
+
 }
 
 PartPOneVoiceFiveLyricsThree = \lyricmode {
   \set ignoreMelismata = ##t
   \set includeGraceNotes = ##t
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \markup
-  \fontsize #-0.757 doot \markup \fontsize #-0.757 doot \markup \fontsize
-  #-0.757 doot \markup \fontsize #-0.757 doo \markup \fontsize #-0.757 doo
-  \markup \fontsize #-0.757 doot \markup \fontsize #-0.757 doot \markup
-  \fontsize #-0.757 doot \markup \fontsize #-0.757 doot \markup \fontsize
-  #-0.757 doot \markup \fontsize #-0.757 doot \markup \fontsize #-0.757 doo
-  \markup \fontsize #-0.757 doo \markup \fontsize #-0.757 doot \markup \fontsize
-  #-0.757 doot \markup \fontsize #-0.757 doo \markup \fontsize #-0.757 doo
-  \markup \fontsize #-0.757 sta -- \markup \fontsize #-0.757 ring \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
+  \repeat unfold 20 \skip1 doot doot doot doo doo doot doot doot doot doot
+  doot doo doo doot doot doo doo sta -- ring \repeat unfold 289 \skip1
+
 }
 
 PartPOneVoiceFiveLyricsTwo = \lyricmode {
   \set ignoreMelismata = ##t
   \set includeGraceNotes = ##t
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \markup \fontsize
-  #-0.757 doot \markup \fontsize #-0.757 doot \markup \fontsize #-0.757 doot
-  \markup \fontsize #-0.757 doot \markup \fontsize #-0.757 doot \markup
-  \fontsize #-0.757 doot \markup \fontsize #-0.757 doot \markup \fontsize
-  #-0.757 doo \markup \fontsize #-0.757 doo \markup \fontsize #-0.757 doot
-  \markup \fontsize #-0.757 doot \markup \fontsize #-0.757 doot \markup
-  \fontsize #-0.757 doot \markup \fontsize #-0.757 doot \markup \fontsize
-  #-0.757 doot \markup \fontsize #-0.757 doo \markup \fontsize #-0.757 doo
-  \markup \fontsize #-0.757 doot \markup \fontsize #-0.757 doot \markup
-  \fontsize #-0.757 doo \markup \fontsize #-0.757 dm \markup \fontsize #-0.757
-  and \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \markup \fontsize
-  #-0.757 no \markup \fontsize #-0.757 it \markup \fontsize #-0.757 "ain’t" __
-  \skip1 \markup \fontsize #-0.757 no \markup \fontsize #-0.757 "fun!" __ \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1
+  \repeat unfold 250 \skip1 doot doot doot doot doot doot doot doo doo doot
+  doot doot doot doot doot doo doo doot doot doo dm and \repeat unfold 29
+  \skip1 no it "ain't" __ \skip1 no "fun!" __ \repeat unfold 48 \skip1
+
 }
 
 PartPOneVoiceSix = \relative f {
-  \clef "bass" \numericTimeSignature \time 4/4 \key bes \major \D f16 [ \D e16
-  \D f16 \D g16 ] \D f8 r8 \D a16 [ \D g16 \D a16 \D bes16 ] \D a8 r8 | % 1
-  \D a16 [ \D a8 \D a16 ] \D g8 [ \D ges8 ] \D f8 r8 r8 \D a,8 | % 2
-  \D bes4 r8. \D bes16 \D f'16 r16 \D f4 \D f8 \break | % 3
-  \D bes,4 r8. \D f'16 \D bes,8 [ \D bes8 ] \D b8 [ \D b8 ] | % 4
-  \D c4 r8. \D c16 \D g'16 r16 \D g4 \D g8 | % 5
-  \D c,4 r8. \D g'16 \D c,8 [ \D d8 ] \D es8 [ \D e8 ] | % 6
-  \D f4 r8. \D f16 \D c'16 r16 \D c4 \D c8 \break | % 7
-  \D f,4 r8. \D f16 \D c'16 r16 \D c4 \D bes8 ~ | % 8
-  \D bes4. \D as8 ~ \D as4. \D g8 ~ | % 9
+  \clef "bass" \numericTimeSignature \time 4/4 \key bes \major f16 [ e16 f16 g16 ] f8 r8 a16 [ g16 a16 bes16 ] a8 r8 | % 1
+  a16 [ a8 a16 ] g8 [ ges8 ] f8 r8 r8 a,8 | % 2
+  bes4 r8. bes16 f'16 r16 f4 f8 \break | % 3
+  bes,4 r8. f'16 bes,8 [ bes8 ] b8 [ b8 ] | % 4
+  c4 r8. c16 g'16 r16 g4 g8 | % 5
+  c,4 r8. g'16 c,8 [ d8 ] es8 [ e8 ] | % 6
+  f4 r8. f16 c'16 r16 c4 c8 \break | % 7
+  f,4 r8. f16 c'16 r16 c4 bes8 ~ | % 8
+  bes4. as8 ~ as4. g8 ~ | % 9
 
   \barNumberCheck #10
-  \D g4 r8. \D d16 \D g16 r16 \D g4 \D d8 | % 10
-  \D c8 [ \D c8 ] \D c8 [ \D g'8 ~ ] \D g4. r8 \pageBreak | % 11
-  \D f8 [ \D f8 ] \D f8 [ \D c'8 ~ ] \D c8 [ \D f,8 ] \D es4 | % 12
-  \D d8 [ \D d8 ] \D d8 [ \D fis8 ~ ] \D fis8 \D a4 \D g8 ~ | % 13
-  \D g4. r16 \D d16 \D g16 r16 \D g4 \D g8 | % 14
-  \D c,4 r8. \D g'16 \D c,16 r16 \D c4 \D g'8 \break | % 15
-  \D f2. r4 | % 16
-  \D bes,4 r8. \D f'16 \D bes16 r16 \D bes4 \D b8 | % 17
-  \D c8 r8 \D c4 -\bendAfter #-4 r4 r8 \D a,8 | % 18
-  \D bes4 r8. \D bes16 \D f'16 r16 \D f4 \D f8 \break | % 19
+  g4 r8. d16 g16 r16 g4 d8 | % 10
+  c8 [ c8 ] c8 [ g'8 ~ ] g4. r8 \pageBreak | % 11
+  f8 [ f8 ] f8 [ c'8 ~ ] c8 [ f,8 ] es4 | % 12
+  d8 [ d8 ] d8 [ fis8 ~ ] fis8 a4 g8 ~ | % 13
+  g4. r16 d16 g16 r16 g4 g8 | % 14
+  c,4 r8. g'16 c,16 r16 c4 g'8 \break | % 15
+  f2. r4 | % 16
+  bes,4 r8. f'16 bes16 r16 bes4 b8 | % 17
+  c8 r8 c4 -\bendAfter #-4 r4 r8 a,8 | % 18
+  bes4 r8. bes16 f'16 r16 f4 f8 \break | % 19
 
   \barNumberCheck #20
-  \D bes,4 r8. \D f'16 \D bes,8 [ \D bes8 ] \D b8 [ \D b8 ] | % 20
-  \D c4 r8. \D c16 \D g'16 r16 \D g4 \D g8 | % 21
-  \D c,4. r8 \D c8 [ \D d8 ] \D es8 [ \D e8 ] | % 22
-  \D f4 r8. \D f16 \D c'16 r16 \D c4 \D c8 \break | % 23
-  \D f,4 r8 \D f8 \D c'8 \D c4 \D bes8 ~ | % 24
-  \D bes4. \D as8 ~ \D as4. \D g8 ~ | % 25
-  \D g4 r8. \D d16 \D g16 r16 \D g4 \D g8 \pageBreak | % 26
-  \D bes8 [ \D bes8 ] \D bes8 [ \D g8 ~ ] \D g8 \D c,4 \D c8 | % 27
-  \D f8 [ \D f8 ] \D f8 [ \D c'8 ~ ] \D c8 [ \D f,8 ] \D es4 | % 28
-  \D d8 [ \D d8 ] \D d8 [ \D fis8 ~ ] \D fis8 \D a4 \D g8 ~ | % 29
+  bes,4 r8. f'16 bes,8 [ bes8 ] b8 [ b8 ] | % 20
+  c4 r8. c16 g'16 r16 g4 g8 | % 21
+  c,4. r8 c8 [ d8 ] es8 [ e8 ] | % 22
+  f4 r8. f16 c'16 r16 c4 c8 \break | % 23
+  f,4 r8 f8 c'8 c4 bes8 ~ | % 24
+  bes4. as8 ~ as4. g8 ~ | % 25
+  g4 r8. d16 g16 r16 g4 g8 \pageBreak | % 26
+  bes8 [ bes8 ] bes8 [ g8 ~ ] g8 c,4 c8 | % 27
+  f8 [ f8 ] f8 [ c'8 ~ ] c8 [ f,8 ] es4 | % 28
+  d8 [ d8 ] d8 [ fis8 ~ ] fis8 a4 g8 ~ | % 29
 
   \barNumberCheck #30
-  \D g2 r8 \D d8 \D g8 [ \D g8 ] \break | % 30
-  \D c,8 [ \D c8 ] \D c8 [ \D g'8 ~ ] \D g8 [ \D g8 ] \D g8 \=2( [ \D ges8 ] | % 31
-  \D f4 \=2) \D f8 [ \D f8 ] \D c8 \D c4 r8 | % 32
-  \D bes4 r8. \D bes16 \D f'16 r16 \D f4 \D f8 | % 33
-  \D f8 r8 \D f16 [ \D e16 \D f16 \D g16 ] \D f8 a8\rest \D a,4 \break | % 34
-  \D bes8 [ \D bes8 ] \D bes8 [ \D bes8 ~ ] \D bes8 [ \D bes8 ] \D c4 | % 35
-  \D c8 [ \D c8 ~ ] \D c4 \D c8 [ \D c8 ] \D c8 [ \D d8 ] | % 36
-  \D es4 \D es4 \D es4 \D es8 [ \D bes'8 ~ ] | % 37
-  \D bes4 \D f4 \D f4 \D f8 [ \D a,8 ] \break | % 38
-  \D bes8 [ \D bes8 ] \D bes8 [ \D bes8 ~ ] \D bes8 \D bes4 \D b8 | % 39
+  g2 r8 d8 g8 [ g8 ] \break | % 30
+  c,8 [ c8 ] c8 [ g'8 ~ ] g8 [ g8 ] g8 \=2( [ ges8 ] | % 31
+  f4 \=2) f8 [ f8 ] c8 c4 r8 | % 32
+  bes4 r8. bes16 f'16 r16 f4 f8 | % 33
+  f8 r8 f16 [ e16 f16 g16 ] f8 a8\rest a,4 \break | % 34
+  bes8 [ bes8 ] bes8 [ bes8 ~ ] bes8 [ bes8 ] c4 | % 35
+  c8 [ c8 ~ ] c4 c8 [ c8 ] c8 [ d8 ] | % 36
+  es4 es4 es4 es8 [ bes'8 ~ ] | % 37
+  bes4 f4 f4 f8 [ a,8 ] \break | % 38
+  bes8 [ bes8 ] bes8 [ bes8 ~ ] bes8 bes4 b8 | % 39
 
   \barNumberCheck #40
-  \D c8 [ \D c8 ] \D g'8 [ \D g8 ~ ] \D g8 [ \D c,8 ] \D c8 [ \D c8 ] | % 40
-  \D c8 [ \D d8 ] \D es!8 [ \D e8 ] \D f8 ( [ \D g8 ) ] \D a8 [ \D c8 ] | % 41
-  \D bes8 [ \D f8 ] \D bes8 [ \D a8 ~ ] \D a8 \D d,4. \pageBreak | % 42
-  \D g8 \D g4 \D ges8 ~ \D ges8 \D ges4 \D f8 ~ | % 43
-  \D f4 ~ \tweak TupletBracket.stencil ##f \tuplet 3/2 {
-    \D f8 [ \D f8 \D f8 ] }
-  \D e2 | % 44
-  \D es?4 \D f4 \D ges4 \D as8 [ \D bes8 ~ ] | % 45
-  \D bes4. \D a?8 ~ \D a16 r16 \D d,4. \break | % 46
-  \D g8 \D g4 \D ges8 ~ \D ges8 \D ges4 \D f8 ~ | % 47
-  \D f4 ~ \tweak TupletBracket.stencil ##f \tuplet 3/2 {
-    \D f8 [ \D f8 \D f8 ] }
-  \D e2 | % 48
-  \D es?4 \D es8 [ \D e8 ~ ] \D e8 \D e4 \D f8 ~ | % 49
+  c8 [ c8 ] g'8 [ g8 ~ ] g8 [ c,8 ] c8 [ c8 ] | % 40
+  c8 [ d8 ] es!8 [ e8 ] f8 ( [ g8 ) ] a8 [ c8 ] | % 41
+  bes8 [ f8 ] bes8 [ a8 ~ ] a8 d,4. \pageBreak | % 42
+  g8 g4 ges8 ~ ges8 ges4 f8 ~ | % 43
+  f4 ~ \tripletNoBracket { f8 [ f8 f8 ] } e2 | % 44
+  es?4 f4 ges4 as8 [ bes8 ~ ] | % 45
+  bes4. a?8 ~ a16 r16 d,4. \break | % 46
+  g8 g4 ges8 ~ ges8 ges4 f8 ~ | % 47
+  f4 ~ \tripletNoBracket { f8 [ f8 f8 ] } e2 | % 48
+  es?4 es8 [ e8 ~ ] e8 e4 f8 ~ | % 49
 
   \barNumberCheck #50
-  \D f8 r8 \D es?8 [ \D es8 ] \D d8 [ \D d8 ] \D c8 [ \D c8 ] \break | % 50
-  \D bes4 r8. \D bes16 \D f'16 r16 \D f4 \D f8 | % 51
-  \D bes,4 r8. \D f'16 \D bes,8 [ \D bes8 ] \D b8 [ \D b8 ] | % 52
-  \D c4 r8. \D c16 \D g'16 r16 \D g4 \D g8 | % 53
-  \D c,4 r8. \D g'16 \D c,8 [ \D d8 ] \D es8 [ \D e8 ] \break | % 54
-  \D f4 r8. \D f16 \D c'16 r16 \D c4 \D c8 | % 55
-  \D f,4 \D f4 \D c'4 \D c8 [ \D bes8 ~ ] | % 56
-  \D bes4. \D as8 ~ \D as4. \D g8 ~ | % 57
-  \D g4 r8. \D d16 \D g16 r16 \D g4 \D g8 \pageBreak | % 58
-  \D bes8 [ \D bes8 ] \D bes8 [ \D g8 ~ ] \D g4. \D c,8 | % 59
+  f8 r8 es?8 [ es8 ] d8 [ d8 ] c8 [ c8 ] \break | % 50
+  bes4 r8. bes16 f'16 r16 f4 f8 | % 51
+  bes,4 r8. f'16 bes,8 [ bes8 ] b8 [ b8 ] | % 52
+  c4 r8. c16 g'16 r16 g4 g8 | % 53
+  c,4 r8. g'16 c,8 [ d8 ] es8 [ e8 ] \break | % 54
+  f4 r8. f16 c'16 r16 c4 c8 | % 55
+  f,4 f4 c'4 c8 [ bes8 ~ ] | % 56
+  bes4. as8 ~ as4. g8 ~ | % 57
+  g4 r8. d16 g16 r16 g4 g8 \pageBreak | % 58
+  bes8 [ bes8 ] bes8 [ g8 ~ ] g4. c,8 | % 59
 
   \barNumberCheck #60
-  \D f8 [ \D f8 ] \D f8 [ \D c'8 ~ ] \D c8 [ \D f,8 ] \D es4 | % 60
-  \D d8 [ \D d8 ] \D d8 [ \D fis8 ~ ] \D fis8 [ \D g8 \D a8 \D g8 ~ ] | % 61
-  \D g8 \D d4 \D g8 ~ \D g8 [ \D g8 ] \D g8 [ \D g8 ] \break | % 62
-  \D c,4 r8. \D c16 \D g'16 r16 \D g8 \D es8 [ \D e8 ] | % 63
-  \D f4 r8. \D c16 \D f8 [ \D f8 ] \D d8 [ \D d8 ] | % 64
-  \D c4 r8. \D c16 \D g'16 r16 \D g8 \D es8 [ \D e8 ] | % 65
-  \D f4 r8. \D c16 \D f16 r16 \D f8 \D d8 [ \D des8 ] \break | % 66
-  \D c8 [ \D b8 ] \D c8 [ \D g'8 ~ ] \D g8 \D ges4 \D f8 ~ | % 67
-  \D f4 \D f8 [ \D f8 ] \D fis8 \D a4 \D g?8 ~ | % 68
-  \D g4 \D g8 [ \D g8 ] \D ges8 [ \D ges8 ] \D ges8 [ \D f8 ~ ( ] | % 69
+  f8 [ f8 ] f8 [ c'8 ~ ] c8 [ f,8 ] es4 | % 60
+  d8 [ d8 ] d8 [ fis8 ~ ] fis8 [ g8 a8 g8 ~ ] | % 61
+  g8 d4 g8 ~ g8 [ g8 ] g8 [ g8 ] \break | % 62
+  c,4 r8. c16 g'16 r16 g8 es8 [ e8 ] | % 63
+  f4 r8. c16 f8 [ f8 ] d8 [ d8 ] | % 64
+  c4 r8. c16 g'16 r16 g8 es8 [ e8 ] | % 65
+  f4 r8. c16 f16 r16 f8 d8 [ des8 ] \break | % 66
+  c8 [ b8 ] c8 [ g'8 ~ ] g8 ges4 f8 ~ | % 67
+  f4 f8 [ f8 ] fis8 a4 g?8 ~ | % 68
+  g4 g8 [ g8 ] ges8 [ ges8 ] ges8 [ f8 ~ ( ] | % 69
 
   \barNumberCheck #70
-  \D f8 [ \D bes8 ) ] \D f8 [ \D e8 ~ ] \D e4 \D e8 [ \D e8 ] \break | % 70
-  \D ges8 [ \D as8 ] \D es8 [ \D f8 ] \D ges8 \D es4 \D bes8 ~ | % 71
-  \D bes2. r4 \bar "|."
+  f8 [ bes8 ) ] f8 [ e8 ~ ] e4 e8 [ e8 ] \break | % 70
+  ges8 [ as8 ] es8 [ f8 ] ges8 es4 bes8 ~ | % 71
+  bes2. r4 \bar "|."
+
 }
 
 PartPOneVoiceSixLyricsOne = \lyricmode {
   \set ignoreMelismata = ##t
   \set includeGraceNotes = ##t
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \markup \fontsize #-0.757 ba \markup
-  \fontsize #-0.757 dm \markup \fontsize #-0.757 ba \markup \fontsize #-0.757 dm
-  \markup \fontsize #-0.757 dm \markup \fontsize #-0.757 ba \markup \fontsize
-  #-0.757 dm \markup \fontsize #-0.757 ba \markup \fontsize #-0.757 dm \markup
-  \fontsize #-0.757 ba \markup \fontsize #-0.757 dm \markup \fontsize #-0.757 ba
-  \markup \fontsize #-0.757 dm \markup \fontsize #-0.757 ba \markup \fontsize
-  #-0.757 dm \markup \fontsize #-0.757 dm \markup \fontsize #-0.757 ba \markup
-  \fontsize #-0.757 dm \markup \fontsize #-0.757 ba \markup \fontsize #-0.757 dm
-  \markup \fontsize #-0.757 ba \markup \fontsize #-0.757 dm \markup \fontsize
-  #-0.757 ba \markup \fontsize #-0.757 dm \markup \fontsize #-0.757 ba \markup
-  \fontsize #-0.757 dm \markup \fontsize #-0.757 dm \markup \fontsize #-0.757 ba
-  \markup \fontsize #-0.757 dm \markup \fontsize #-0.757 ba \markup \fontsize
-  #-0.757 "dm," \markup \fontsize #-0.757 the \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \markup \fontsize #-0.757 ba \markup \fontsize #-0.757 dm \markup
-  \fontsize #-0.757 dm \markup \fontsize #-0.757 "I'm" \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \markup \fontsize #-0.757 ba \markup
-  \fontsize #-0.757 dm \markup \fontsize #-0.757 dm \markup \fontsize #-0.757 ba
-  \markup \fontsize #-0.757 dm \markup \fontsize #-0.757 ba \markup \fontsize
-  #-0.757 dm \markup \fontsize #-0.757 dm \markup \fontsize #-0.757 doo \markup
-  \fontsize #-0.757 doo \markup \fontsize #-0.757 Dm \markup \fontsize #-0.757
-  ba \markup \fontsize #-0.757 dm \markup \fontsize #-0.757 dm __ \markup
-  \fontsize #-0.757 ba \skip1 \skip1 \markup \fontsize #-0.757 ba \markup
-  \fontsize #-0.757 dm \markup \fontsize #-0.757 ba \markup \fontsize #-0.757 dm
-  \markup \fontsize #-0.757 dm \markup \fontsize #-0.757 ba \markup \fontsize
-  #-0.757 dm \markup \fontsize #-0.757 ba \markup \fontsize #-0.757 dm \markup
-  \fontsize #-0.757 ba \markup \fontsize #-0.757 dm \markup \fontsize #-0.757 ba
-  \markup \fontsize #-0.757 dm \markup \fontsize #-0.757 ba \markup \fontsize
-  #-0.757 dm \markup \fontsize #-0.757 dm \markup \fontsize #-0.757 ba \markup
-  \fontsize #-0.757 dm \skip1 \skip1 \skip1 \skip1 \markup \fontsize #-0.757 dm
-  \markup \fontsize #-0.757 ba \markup \fontsize #-0.757 dm \markup \fontsize
-  #-0.757 dm \markup \fontsize #-0.757 ba \markup \fontsize #-0.757 dm \markup
-  \fontsize #-0.757 "there’s" \markup \fontsize #-0.757 no \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \markup \fontsize #-0.757 ba \markup \fontsize
-  #-0.757 dm \markup \fontsize #-0.757 dm \markup \fontsize #-0.757 the \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \markup \fontsize #-0.757 dm \markup \fontsize
-  #-0.757 ba \markup \fontsize #-0.757 dm \markup \fontsize #-0.757 dm \markup
-  \fontsize #-0.757 ba \markup \fontsize #-0.757 dm \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \markup \fontsize #-0.757 then \markup \fontsize #-0.757 you \markup
-  \fontsize #-0.757 got -- \markup \fontsize #-0.757 ta \markup \fontsize
-  #-0.757 pay \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \markup \fontsize #-0.757 "don’t" \markup
-  \fontsize #-0.757 you \markup \fontsize #-0.757 "know," \markup \fontsize
-  #-0.757 I \markup \fontsize #-0.757 know __ \skip1 \markup \fontsize #-0.757
-  the \markup \fontsize #-0.757 may -- \markup \fontsize #-0.757 "or!" \markup
-  \fontsize #-0.757 da \markup \fontsize #-0.757 da \markup \fontsize #-0.757
-  "da," __ \skip1 \markup \fontsize #-0.757 "oh," \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \markup \fontsize #-0.757 Hear \markup \fontsize #-0.757 it \markup
-  \fontsize #-0.757 call -- \markup \fontsize #-0.757 "ing," \markup \fontsize
-  #-0.757 now \markup \fontsize #-0.757 the \markup \fontsize #-0.757 Dm \markup
-  \fontsize #-0.757 ba \markup \fontsize #-0.757 dm \markup \fontsize #-0.757 dm
-  \markup \fontsize #-0.757 ba \markup \fontsize #-0.757 dm \markup \fontsize
-  #-0.757 ba \markup \fontsize #-0.757 dm \markup \fontsize #-0.757 ba \markup
-  \fontsize #-0.757 dm \markup \fontsize #-0.757 ba \markup \fontsize #-0.757 dm
-  \markup \fontsize #-0.757 ba \markup \fontsize #-0.757 dm \markup \fontsize
-  #-0.757 dm \markup \fontsize #-0.757 ba \markup \fontsize #-0.757 dm \markup
-  \fontsize #-0.757 ba \markup \fontsize #-0.757 dm \markup \fontsize #-0.757 ba
-  \markup \fontsize #-0.757 dm \markup \fontsize #-0.757 ba \markup \fontsize
-  #-0.757 dm \markup \fontsize #-0.757 ba \markup \fontsize #-0.757 dm \markup
-  \fontsize #-0.757 dm \markup \fontsize #-0.757 ba \markup \fontsize #-0.757 dm
-  \markup \fontsize #-0.757 and \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \markup \fontsize #-0.757 ba \markup \fontsize #-0.757 dm \markup
-  \fontsize #-0.757 dm \markup \fontsize #-0.757 "we’ve" \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \markup \fontsize #-0.757 dm \markup \fontsize #-0.757 ba
-  \markup \fontsize #-0.757 dm \markup \fontsize #-0.757 dm \skip1 \skip1 \skip1
-  \markup \fontsize #-0.757 ba \markup \fontsize #-0.757 dm \markup \fontsize
-  #-0.757 ba \markup \fontsize #-0.757 dm \markup \fontsize #-0.757 ba \markup
-  \fontsize #-0.757 dm \markup \fontsize #-0.757 ba \markup \fontsize #-0.757 dm
-  \markup \fontsize #-0.757 dm \markup \fontsize #-0.757 in \markup \fontsize
-  #-0.757 the \markup \fontsize #-0.757 ground \markup \fontsize #-0.757 ba
-  \markup \fontsize #-0.757 dm \markup \fontsize #-0.757 dm \markup \fontsize
-  #-0.757 "He's" \markup \fontsize #-0.757 the \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
-  \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1 \skip1
+  \repeat unfold 16 \skip1 ba dm ba dm dm ba dm ba dm ba dm ba dm ba dm dm ba
+  dm ba dm ba dm ba dm ba dm dm ba dm ba "dm," the \repeat unfold 6 \skip1 ba
+  dm dm "I'm" \repeat unfold 20 \skip1 ba dm dm ba dm ba dm dm doo doo Dm ba
+  dm dm __ ba \repeat unfold 2 \skip1 ba dm ba dm dm ba dm ba dm ba dm ba dm
+  ba dm dm ba dm \repeat unfold 4 \skip1 dm ba dm dm ba dm "there's" no
+  \repeat unfold 7 \skip1 ba dm dm the \repeat unfold 38 \skip1 dm ba dm dm ba
+  dm \repeat unfold 16 \skip1 then you got -- ta pay \repeat unfold 24 \skip1
+  "don't" you "know," I know __ \skip1 the may -- "or!" da da "da," __
+  \skip1 "oh," \repeat unfold 38 \skip1 Hear it call -- "ing," now the Dm ba
+  dm dm ba dm ba dm ba dm ba dm ba dm dm ba dm ba dm ba dm ba dm ba dm dm ba
+  dm and \repeat unfold 8 \skip1 ba dm dm "we've" \repeat unfold 28 \skip1
+  dm ba dm dm \repeat unfold 3 \skip1 ba dm ba dm ba dm ba dm dm in the ground
+  ba dm dm "He's" the \repeat unfold 35 \skip1
+
 }
 
 
-% The score definition
+%% The score definition
 \score {
-  <<
-    \new StaffGroup \with {
-      systemStartDelimiter = #'SystemStartBar
-    } <<
-      \new PianoStaff <<
-        \set PianoStaff.instrumentName = "TTBB Chorus"
-        \set PianoStaff.shortInstrumentName = "TTBB"
-        \context Staff = "1" <<
-          \mergeDifferentlyDottedOn
-          \mergeDifferentlyHeadedOn
-          \context Voice = "PartPOneVoiceOne" {
-            \voiceOne \PartPOneVoiceOne
-          }
-          \new Lyrics \with {
-            alignAboveContext = "1"
-            } \lyricsto "PartPOneVoiceOne" {
-            \PartPOneVoiceOneLyricsOne
-          }
-          \new Lyrics \with {
-            alignAboveContext = "1"
-            } \lyricsto "PartPOneVoiceOne" {
-            \PartPOneVoiceOneLyricsThree
-          }
-          \new Lyrics \with {
-            alignAboveContext = "1"
-            } \lyricsto "PartPOneVoiceOne" {
-            \PartPOneVoiceOneLyricsTwo
-          }
-          \context Voice = "PartPOneVoiceTwo" {
-            \voiceTwo \PartPOneVoiceTwo
-          }
-          \new Lyrics \lyricsto "PartPOneVoiceTwo" {
-            \PartPOneVoiceTwoLyricsOne
-          }
-        >>
-        \context Staff = "2" <<
-          \override Staff.BarLine.allow-span-bar = ##f
-          \mergeDifferentlyDottedOn
-          \mergeDifferentlyHeadedOn
-          \context Voice = "PartPOneVoiceFive" {
-            \voiceOne \PartPOneVoiceFive
-          }
-          \new Lyrics \with {
-            alignAboveContext = "2"
-            } \lyricsto "PartPOneVoiceFive" {
-            \PartPOneVoiceFiveLyricsOne
-          }
-          \new Lyrics \with {
-            alignAboveContext = "2"
-            } \lyricsto "PartPOneVoiceFive" {
-            \PartPOneVoiceFiveLyricsThree
-          }
-          \new Lyrics \with {
-            alignAboveContext = "2"
-            } \lyricsto "PartPOneVoiceFive" {
-            \PartPOneVoiceFiveLyricsTwo
-          }
-          \context Voice = "PartPOneVoiceSix" {
-            \voiceTwo \PartPOneVoiceSix
-          }
-          \new Lyrics \lyricsto "PartPOneVoiceSix" {
-            \PartPOneVoiceSixLyricsOne
-          }
-        >>
-      >>
+  \new ChoirStaff <<
+    \set ChoirStaff.instrumentName = "SATB Chorus"
+    \set ChoirStaff.shortInstrumentName = "SATB"
+
+    % STAVE 1: Treble Clef for Tenor and Lead
+    \context Staff = "1" <<
+      \clef treble
+      \mergeDifferentlyDottedOn
+      \mergeDifferentlyHeadedOn
+
+      % Voice 1: Lead (or Tenor)
+      \context Voice = "PartPOneVoiceOne" {
+        \voiceOne \PartPOneVoiceOne
+      }
+      \new Lyrics \with { alignAboveContext = "1" } \lyricsto "PartPOneVoiceOne" {
+        \PartPOneVoiceOneLyricsOne
+      }
+      \new Lyrics \with { alignAboveContext = "1" } \lyricsto "PartPOneVoiceOne" {
+        \PartPOneVoiceOneLyricsThree
+      }
+      \new Lyrics \with { alignAboveContext = "1" } \lyricsto "PartPOneVoiceOne" {
+        \PartPOneVoiceOneLyricsTwo
+      }
+
+      % Voice 2: Tenor (or Lead)
+      \context Voice = "PartPOneVoiceTwo" {
+        \voiceTwo \PartPOneVoiceTwo
+      }
+      \new Lyrics \lyricsto "PartPOneVoiceTwo" {
+        \PartPOneVoiceTwoLyricsOne
+      }
+    >>
+
+    % STAVE 2: Bass Clef for Baritone and Bass
+    \context Staff = "2" <<
+      \clef bass
+      \mergeDifferentlyDottedOn
+      \mergeDifferentlyHeadedOn
+
+      % Voice 1: Baritone
+      \context Voice = "PartPOneVoiceFive" {
+        \voiceOne \PartPOneVoiceFive
+      }
+      \new Lyrics \with { alignAboveContext = "2" } \lyricsto "PartPOneVoiceFive" {
+        \PartPOneVoiceFiveLyricsOne
+      }
+      \new Lyrics \with { alignAboveContext = "2" } \lyricsto "PartPOneVoiceFive" {
+        \PartPOneVoiceFiveLyricsThree
+      }
+      \new Lyrics \with { alignAboveContext = "2" } \lyricsto "PartPOneVoiceFive" {
+        \PartPOneVoiceFiveLyricsTwo
+      }
+
+      % Voice 2: Bass
+      \context Voice = "PartPOneVoiceSix" {
+        \voiceTwo \PartPOneVoiceSix
+      }
+      \new Lyrics \lyricsto "PartPOneVoiceSix" {
+        \PartPOneVoiceSixLyricsOne
+      }
     >>
   >>
+
   \layout {}
   % To create MIDI output, uncomment the following line:
   % \midi { \tempo 4 = 100 }
 }
-
