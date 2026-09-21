@@ -41,13 +41,6 @@ tripletNoBracket =
   poet = \markup \normal-text \normalsize \concat \typewriter { "By Ryan Lerman, Theo Katzman " }
   copyright = \markup \normal-text \typewriter \normalsize \fontsize #-1.705
   "Copyright © 2025 DUKES POINT MUSIC / RESERVOIR 416 / WHOOPEE GUY MUSIC"
-  "id: copyright" =
-  "Copyright © 2025 DUKES POINT MUSIC / RESERVOIR 416 / WHOOPEE GUY MUSIC"
-  "id: composer" = "by Ryan Lerman & Theo Katzman"
-  "id: arranger" = "arr. Peter Kempf"
-  "id: software" = "MuseScore Studio 4.7.5"
-  "id: encoding-date" = "2026-09-20"
-  "id: source" = "https://flat.io/score/67bb6f3ef4495863ae21c635-lonely-town"
   tagline = ##f
 }
 #(set-global-staff-size 19)
@@ -81,7 +74,10 @@ tripletNoBracket =
   }
 }
 TenorNotes = \relative f' {
-  \clef "treble" \numericTimeSignature \time 4/4 \key bes \major \tweak direction #UP \tempo \markup \normal-text \concat { \normal-text \smaller { \fontsize #-2 \rhythm { 4 } \char ##x2009 = \char ##x2009 100 } } f16 [ e16 f16 ^\markup \italic \typewriter "Playful, jaunty" g16 ] f8 r8 f16 [ e16 f16 g16 ] f8 r8 | % 1
+  \clef "treble" \numericTimeSignature \time 4/4 \key bes \major \tweak direction #UP 
+  \tempo \markup \normal-text \concat { \normal-text \smaller { \fontsize #-2 \rhythm { 4 } 
+  \char ##x2009 = \char ##x2009 100 } } f16 [ e16 f16-\tweak outside-staff-padding #2 
+  ^\markup { \italic \typewriter "Playful, jaunty" } g16 ] f8 r8 f16 [ e16 f16 g16 ] f8 r8 | % 1
   f16 [ f8 f16 ] g8 [ gis8 ] a8 r8 r4 | % 2
   r8 \mark \markup { \bold \italic \typewriter "Verse 1" } bes8 r8 bes8 r8 bes8 r8 bes8 | % 3
   r8 bes8 r8 bes8 r8 bes8 r8 as8 | % 4
@@ -96,7 +92,7 @@ TenorNotes = \relative f' {
   bes8 [ bes8 ] bes8 [ bes8 ~ ] bes4. r8 | % 11
   a8 [ a8 ] a8 [ a8 ~ ] a8 [ a8 ] a4 | % 12
   c8 [ bes8 ] a8 [ a8 ~ ] a8 fis4 g8 ~ | % 13
-  g2 r4 r4 | % 14
+  g2 r2 | % 14
   r8 bes8 r8 bes8 r8 bes8 r8 bes8 | % 15
   a2. r4 | % 16
   r8 f8 r8 f8 r8 f8 r8 as8 | % 17
@@ -163,10 +159,14 @@ TenorNotes = \relative f' {
   a4 a8 [ bes8 ] a8 fis4 \mark \markup { \bold \italic \typewriter Tag } g8 ~ | % 68
   g4 g8 [ g8 ] ges8 [ ges8 ] ges8 [ g8 ~ ] | % 69
 
-  \barNumberCheck #70
+\barNumberCheck #70
   g4 g8 [ g8 ~ ] g4 g8 [ g8 ] | % 70
-  es8 [ f8 ] ges8 [ \tweak style #'dashed-line \tweak bound-details.left.text \markup \typewriter "rit." ^\startTextSpan as8 ] bes8 \stopTextSpan c4 d8 ~ | % 71
+  es8 [ f8 ] ges8 [ \tweak style #'dashed-line 
+                    \tweak bound-details.left.text \markup \typewriter "rit." 
+                    \tweak TextSpanner.outside-staff-padding #2 
+                    ^\startTextSpan as8 ] bes8 \stopTextSpan c4 d8 ~ | % 71
   d2. r4 \bar "|."
+
 
 }
 
@@ -212,7 +212,7 @@ LeadNotes = \relative f' {
   d8 [ f8 ] d8 [ a'8 ~ ] a8 [ g?8 ] d4 | % 3
   d8 [ f8 ] g8 [ a8 ] d,2 | % 4
   r4 c8 [ bes8 ] c8 bes4 g8 ~ | % 5
-  g2 r4 r4 | % 6
+  g2 r2 | % 6
   c8 [ d8 ] es8 [ a8 ] a8 [ g8 ] es4 | % 7
   r4 f8 [ d8 ] f8 g4 d8 ~ | % 8
   d4. d8 ~ d4. d8 ~ | % 9
@@ -225,7 +225,7 @@ LeadNotes = \relative f' {
   b2 r8 g8 bes8 [ b8 ] | % 14
   c8 [ d8 ] c8 [ f8 ~ ] f8 [ d8 ] c4 | % 15
   r4 c8 [ d8 ] f8 d4 g,8 ~ | % 16
-  g8 r8 r4 r4 r8 d'8 | % 17
+  g8 r4. r4. d'8 | % 17
   f8 r8 f4 -\bendAfter #-4 r4 bes,8 [ c8 ] | % 18
   d8 [ f8 ] d8 [ a'8 ~ ] a8 [ g8 ] d4 | % 19
 
@@ -366,7 +366,7 @@ BaritoneNotes = \relative f {
   es8 [ f8 ] es8 [ es8 ~ ] es4. r8 | % 11
   es8 [ f8 ] es8 [ es8 ~ ] es8 [ d8 ] c4 | % 12
   f8 [ f8 ] c8 [ c8 ~ ] c8 d4 d8 ~ | % 13
-  d2 r4 r4 | % 14
+  d2 r2 | % 14
   r8 es8 r8 d8 r8 f8 r8 es8 | % 15
   es2. r4 | % 16
   r8 d8 r8 d8 r8 d8 r8 f8 | % 17
@@ -390,7 +390,7 @@ BaritoneNotes = \relative f {
   es8 [ es8 ] es8 [ d8 ~ ] d8 [ f8 ] es4 ~ | % 31
   es4 es8 [ f8 ] f8 f4 d8 ~ | % 32
   d8 d8 r8 d8 r8 d8 r8 d8 | % 33
-  es8 r8 f,16 [ e16 f16 g16 ] f8 b,8\rest g'4 | % 34
+  es8 r8 f,16 [ e16 f16 g16 ] f8 r8 g4 | % 34
   f8 [ f8 ] f8 [ f8 ~ ] f8 [ fis8 ] g4 | % 35
   c8 [ c8 ~ ] c2 r4 | % 36
   bes4 bes4 bes4 bes8 [ d8 ~ ] | % 37
@@ -497,7 +497,7 @@ BassNotes = \relative f {
   c,4 r8. g'16 c,16 r16 c4 g'8 | % 15
   f2. r4 | % 16
   bes,4 r8. f'16 bes16 r16 bes4 b8 | % 17
-  c8 r8 c4 -\bendAfter #-4 r4 r8 a,8 | % 18
+  c8 r8 c4 -\bendAfter #-4 r4. a,8 | % 18
   bes4 r8. bes16 f'16 r16 f4 f8 | % 19
 
   \barNumberCheck #20
@@ -517,7 +517,7 @@ BassNotes = \relative f {
   c,8 [ c8 ] c8 [ g'8 ~ ] g8 [ g8 ] g8 \=2( [ ges8 ] | % 31
   f4 \=2) f8 [ f8 ] c8 c4 r8 | % 32
   bes4 r8. bes16 f'16 r16 f4 f8 | % 33
-  f8 r8 f16 [ e16 f16 g16 ] f8 a8\rest a,4 | % 34
+  f8 r8 f16 [ e16 f16 g16 ] f8 r8 a,4 | % 34
   bes8 [ bes8 ] bes8 [ bes8 ~ ] bes8 [ bes8 ] c4 | % 35
   c8 [ c8 ~ ] c4 c8 [ c8 ] c8 [ d8 ] | % 36
   es4 es4 es4 es8 [ bes'8 ~ ] | % 37
@@ -712,7 +712,12 @@ BassTag = \lyricmode {
     >>
   >>
 
-  \layout {}
+  \layout {
+    \context {
+      \Staff
+      \consists "Merge_rests_engraver"
+    }
+  }
   % To create MIDI output, uncomment the following line:
   % \midi { \tempo 4 = 100 }
 }
