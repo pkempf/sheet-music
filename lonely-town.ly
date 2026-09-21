@@ -48,6 +48,7 @@ tripletNoBracket =
   "id: software" = "MuseScore Studio 4.7.5"
   "id: encoding-date" = "2026-09-20"
   "id: source" = "https://flat.io/score/67bb6f3ef4495863ae21c635-lonely-town"
+  tagline = ##f
 }
 #(set-global-staff-size 19)
 \paper {
@@ -74,7 +75,7 @@ tripletNoBracket =
   \context {
     \Score
     autoBeaming = ##f
-    \consists #(bars-per-line-engraver '(4))
+    \consists #(bars-per-line-engraver '(3))
   }
   \context {
     \Lyrics
@@ -86,7 +87,7 @@ tripletNoBracket =
 TenorNotes = \relative f' {
   \clef "treble" \numericTimeSignature \time 4/4 \key bes \major \tweak direction #UP \tempo \markup \normal-text \concat { \normal-text \smaller { \fontsize #-2 \rhythm { 4 } \char ##x2009 = \char ##x2009 100 } } f16 [ e16 f16 ^\markup \italic \typewriter "Playful, jaunty" g16 ] f8 r8 f16 [ e16 f16 g16 ] f8 r8 | % 1
   f16 [ f8 f16 ] g8 [ gis8 ] a8 r8 r4 | % 2
-  r8 ^\markup \bold \italic \typewriter "Verse 1" bes8 r8 bes8 r8 bes8 r8 bes8 | % 3
+  r8 \mark \markup { \bold \italic \typewriter "Verse 1" } bes8 r8 bes8 r8 bes8 r8 bes8 | % 3
   r8 bes8 r8 bes8 r8 bes8 r8 as8 | % 4
   g4 r8 g8 r8 g8 r8 bes8 | % 5
   r8 bes8 r8 bes8 r8 bes8 r8 bes8 | % 6
@@ -104,7 +105,7 @@ TenorNotes = \relative f' {
   a2. r4 | % 16
   r8 f8 r8 f8 r8 f8 r8 as8 | % 17
   a?8 r8 a4 -\bendAfter #-4 r4 es8 [ es8 ] | % 18
-  f8 [ ^\markup \bold \italic \typewriter "Verse 2" bes8 ] bes8 [ f8 ~ ] f8 [ bes8 ] bes4 | % 19
+  f8 \mark \markup { \bold \italic \typewriter "Verse 2" } bes8 bes8 [ f8 ~ ] f8 [ bes8 ] bes4 | % 19
 
   \barNumberCheck #20
   bes8 [ bes8 ] bes8 [ c8 ] bes4 as4 | % 20
@@ -124,7 +125,7 @@ TenorNotes = \relative f' {
   a4 ) a8 [ a8 ] a8 a4 bes8 ~ | % 32
   bes8 bes8 r8 bes8 r8 bes8 r8 bes8 | % 33
   a8 r8 f16 [ e16 f16 g16 ] f8 r8 f4 | % 34
-  d8 [ ^\markup \bold \italic \typewriter "Bridge A" f8 ] bes8 [ g8 ~ ] g8 [ bes8 ] d4 | % 35
+  d8 \mark \markup{  \bold \italic \typewriter "Bridge A" } f8 bes8 [ g8 ~ ] g8 [ bes8 ] d4 | % 35
   g,8 [ g8 ~ ] g2 r4 | % 36
   r4 g4 g4 bes8 [ g8 ( ] | % 37
   f8 ) [ d'16 cis16 ] d8 [ bes16 a16 ] bes8 [ f16 e?16 ] f8 [ f8 ] | % 38
@@ -134,7 +135,7 @@ TenorNotes = \relative f' {
   d'8 [ d8 ] c8 [ d8 ~ ] d8 [ g,8 ] bes8 [ g8 ] | % 40
   r4 d'4 d4 f,8 [ c'8 ] | % 41
   bes4. c16 [ des16 ] d4. r8 | % 42
-  d8 ^\markup \bold \italic \typewriter "Bridge B" d4 d8 ~ d8 d4 d8 ~ | % 43
+  d8 \mark \markup { \bold \italic \typewriter "Bridge B" } d4 d8 ~ d8 d4 d8 ~ | % 43
   d4 ~ \tripletNoBracket { d8 [ c8 bes8 ] } a8 ( g4. ) | % 44
   ges4 as4 bes4 c8 [ d16 ( es16 ] | % 45
   d2. ) r8 bes8 | % 46
@@ -144,7 +145,7 @@ TenorNotes = \relative f' {
 
   \barNumberCheck #50
   a2 r2 | % 50
-  r8 ^\markup \bold \italic \typewriter "Verse 3" bes8 r8 bes8 r8 bes8 r8 bes8 | % 51
+  r8 \mark \markup { \bold \italic \typewriter "Verse 3" } bes8 r8 bes8 r8 bes8 r8 bes8 | % 51
   r8 bes8 r8 bes8 r8 bes8 r8 as8 | % 52
   g4 r8 g8 r8 g8 r8 bes8 | % 53
   r8 bes8 r8 bes8 r8 bes8 r8 bes8 | % 54
@@ -163,7 +164,7 @@ TenorNotes = \relative f' {
   es8 ) [ f8 ] es8 [ bes'8 ] bes8 [ g8 ] g4 ( | % 65
   a4 ) a8 [ bes8 ] a8 f4 r8 | % 66
   es8 [ f8 ] es8 [ bes'8 ~ ] bes8 bes4 a8 ~ | % 67
-  a4 a8 [ bes8 ] a8 fis4 g8 ~ ^\markup \bold \italic \typewriter Tag | % 68
+  a4 a8 [ bes8 ] a8 fis4 \mark \markup { \bold \italic \typewriter Tag } g8 ~ | % 68
   g4 g8 [ g8 ] ges8 [ ges8 ] ges8 [ g8 ~ ] | % 69
 
   \barNumberCheck #70
