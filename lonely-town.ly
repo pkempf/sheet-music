@@ -43,7 +43,7 @@ tripletNoBracket =
   copyright = \markup \normal-text \typewriter \normalsize \fontsize #-1.705
   "Copyright © 2025 DUKES POINT MUSIC / RESERVOIR 416 / WHOOPEE GUY MUSIC"
   tagline = ##f
-  version = "1.05"
+  version = "1.09"
   updated = "9/21/26"
 }
 #(set-global-staff-size 19)
