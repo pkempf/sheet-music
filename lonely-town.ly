@@ -36,12 +36,15 @@ tripletNoBracket =
     \center-column { "arr. Peter Kempf " \vspace #1 }
   }
   subtitle = \markup \normal-text \normalsize \concat \typewriter { \italic
-    \center-column { "for Gotham Chorus, July 2026" "rev September 21, 2026"}
+    \center-column { "for Gotham Chorus, July 2026" 
+    \concat { "rev " \fromproperty #'header:updated " (v" \fromproperty #'header:version ")"}}
   }
   poet = \markup \normal-text \normalsize \concat \typewriter { "By Ryan Lerman, Theo Katzman " }
   copyright = \markup \normal-text \typewriter \normalsize \fontsize #-1.705
   "Copyright © 2025 DUKES POINT MUSIC / RESERVOIR 416 / WHOOPEE GUY MUSIC"
   tagline = ##f
+  version = "1.05"
+  updated = "9/21/26"
 }
 #(set-global-staff-size 19)
 \paper {
@@ -54,6 +57,16 @@ tripletNoBracket =
   indent = 1.66\cm
   short-indent = 0.3\cm
   max-systems-per-page = 4
+  oddHeaderMarkup = \markup \fill-line {
+    ""
+    \if \should-print-page-number \concat { 
+      "v" \fromproperty #'header:version ", page " \fromproperty #'page:page-number-string }
+  }
+  evenHeaderMarkup = \markup \fill-line {
+    \if \should-print-page-number \concat { 
+      "v" \fromproperty #'header:version ", page " \fromproperty #'page:page-number-string }
+    ""
+  }
 }
 \layout {
   \context {
