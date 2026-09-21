@@ -60,17 +60,12 @@ tripletNoBracket =
   right-margin = 0.68\cm
   indent = 1.66\cm
   short-indent = 0.3\cm
-  system-system-spacing.basic-distance = #8
-  score-system-spacing =
-    #'((basic-distance . 12)
-       (minimum-distance . 6)
-       (padding . 1)
-       (stretchability . 12))
 }
 \layout {
   \context {
     \Staff
     printKeyCancellation = ##f
+    \override VerticalAxisGroup.staff-staff-spacing.basic-distance = #16
   }
   \context {
     \Score
@@ -180,13 +175,14 @@ TenorIntro = \lyricmode {
 
 TenorVerseOne = \lyricmode {
   doot doot doot doot doot doot doot doo doo doot doot doot doot doot
-  doot doo doo doot doot doo doo sta -- ring \repeat unfold 35 \skip1
-  doot doot doot doot \repeat unfold 5 \skip1
+  doot doo doo doot doot doo doo sta -- ring \repeat unfold 31 \skip1
+  doot doot doot doo doo doot doot doot \repeat unfold 5 \skip1
 }
 
 TenorVerseTwo = \lyricmode {
-  \repeat unfold 20 \skip1 You can hear him \repeat unfold 7 \skip1 loud
-  \repeat unfold 52 \skip1 doot doot doot doo doo \repeat unfold 6 \skip1
+  \repeat unfold 12 \skip1 "He's" there \repeat unfold 6 \skip1 You can hear 
+  him \repeat unfold 7 \skip1 loud \repeat unfold 52 \skip1 doot doot doot doo 
+  doo \repeat unfold 6 \skip1
 }
 
 TenorBridgeA = \lyricmode {
@@ -443,35 +439,6 @@ BaritoneNotes = \relative f {
 
 }
 
-BariLyricsOne = \lyricmode {
-  \set ignoreMelismata = ##t
-  \set includeGraceNotes = ##t
-  \repeat unfold 16 \skip1 doot doot doot doot \repeat unfold 50 \skip1 doot
-  doot doot doo doo doot doot doot ba \repeat unfold 16 \skip1 "he's" there
-  \repeat unfold 6 \skip1 You can hear him \repeat unfold 7 \skip1 "loud,"
-  \repeat unfold 52 \skip1 doot doot doot doo dm \repeat unfold 22 \skip1 the
-  "fare," but un \repeat unfold 15 \skip1 I know \repeat unfold 4 \skip1 da da
-  da __ \repeat unfold 95 \skip1 Lone -- ly "Town," \repeat unfold 11 \skip1
-  ground __ \repeat unfold 18 \skip1 one __ \repeat unfold 4 \skip1
-
-}
-
-BariLyricsTwo = \lyricmode {
-  \set ignoreMelismata = ##t
-  \set includeGraceNotes = ##t
-  \repeat unfold 2 \skip1 doot doot doot doo doo doot doot doot doot doot
-  doot doo doo doot doot doo doo sta -- ring \repeat unfold 289 \skip1
-
-}
-
-BariLyricsThree = \lyricmode {
-  \set ignoreMelismata = ##t
-  \set includeGraceNotes = ##t
-  \repeat unfold 250 \skip1 doot doot doot doot doot doot doot doo doo doot
-  doot doot doot doot doot doo doo doot doot doo dm and \repeat unfold 29
-  \skip1 no it "ain't" __ \skip1 no "fun!" __ \repeat unfold 48 \skip1
-}
-
 BariIntro = \lyricmode {
   \repeat unfold 16 \skip1
 }
@@ -483,8 +450,9 @@ BariVerseOne = \lyricmode {
 }
 
 BariVerseTwo = \lyricmode {
-  \repeat unfold 20 \skip1 You can hear him \repeat unfold 7 \skip1 loud
-  \repeat unfold 52 \skip1 doot doot doot doo doo \repeat unfold 6 \skip1
+  \repeat unfold 12 \skip1 "He's" there \repeat unfold 6 \skip1 You can hear 
+  him \repeat unfold 7 \skip1 loud \repeat unfold 52 \skip1 doot doot doot doo 
+  doo \repeat unfold 6 \skip1
 }
 
 BariBridgeA = \lyricmode {
@@ -660,7 +628,7 @@ BassTag = \lyricmode {
   \new ChoirStaff <<
 
     % STAVE 1: Treble Clef for Tenor and Lead
-    \context Staff = "1" <<
+    \context Staff = "staffOne" <<
       \clef treble
       \mergeDifferentlyDottedOn
       \mergeDifferentlyHeadedOn
@@ -673,7 +641,14 @@ BassTag = \lyricmode {
       \context Voice = "Tenor" {
         \voiceOne \TenorNotes
       }
-      \new Lyrics \with { alignAboveContext = "1" } \lyricsto "Tenor" {
+      \new Lyrics \with { 
+        alignAboveContext = "staffOne" 
+        % Prevent Lead from getting too close to the Baritone staff below it
+        \override VerticalAxisGroup.nonstaff-unrelatedstaff-spacing =
+          #'((basic-distance . 5)
+            (minimum-distance . 4)
+            (padding . 1.5))
+      } \lyricsto "Tenor" {
         \TenorIntro
         \TenorVerseOne
         \TenorVerseTwo
@@ -687,7 +662,9 @@ BassTag = \lyricmode {
       \context Voice = "Lead" {
         \voiceTwo \LeadNotes
       }
-      \new Lyrics \lyricsto "Lead" {
+      \new Lyrics \with { 
+        alignBelowContext = "staffOne" 
+      } \lyricsto "Lead" {
         \LeadIntro
         \LeadVerseOne
         \LeadVerseTwo
@@ -699,7 +676,7 @@ BassTag = \lyricmode {
     >>
 
     % STAVE 2: Bass Clef for Baritone and Bass
-    \context Staff = "2" <<
+    \context Staff = "staffTwo" <<
       \clef bass
       \mergeDifferentlyDottedOn
       \mergeDifferentlyHeadedOn
@@ -712,7 +689,14 @@ BassTag = \lyricmode {
       \context Voice = "Baritone" {
         \voiceOne \BaritoneNotes
       }
-      \new Lyrics \with { alignAboveContext = "2" } \lyricsto "Baritone" {
+      \new Lyrics \with { 
+        alignAboveContext = "staffTwo" 
+        % Prevent Baritone from floating up into the Lead staff territory
+        \override VerticalAxisGroup.nonstaff-unrelatedstaff-spacing =
+          #'((basic-distance . 5)
+            (minimum-distance . 4)
+            (padding . 1.5))
+      } \lyricsto "Baritone" {
         \BariIntro
         \BariVerseOne
         \BariVerseTwo
