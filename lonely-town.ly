@@ -60,6 +60,7 @@ tripletNoBracket =
   right-margin = 0.68\cm
   indent = 1.66\cm
   short-indent = 0.3\cm
+  max-systems-per-page = 4
 }
 \layout {
   \context {
@@ -88,7 +89,7 @@ TenorNotes = \relative f' {
   r8 bes8 r8 bes8 r8 bes8 r8 bes8 | % 6
   a4 r8 c8 r8 a8 r8 a8 | % 7
   a4 a8 [ a8 ] a8 a4 bes8 ~ | % 8
-  bes4. f8 ~ f4. f8 ~ | % 9
+  bes4. f8 ~ f4. f8 ~ | \pageBreak % 9
 
   \barNumberCheck #10
   f2 ~ f8 r8 f8 [ f8 ] | % 10
@@ -329,15 +330,15 @@ LeadBridgeA = \lyricmode {
 LeadBridgeB = \lyricmode {
   No one seems __ \skip1 to want __ \repeat unfold 2 \skip1 to be "near;" they
   all run a -- "way." __ \skip1 "Oh," __ \skip1 but deep in side __ \skip1 a song
-  __ \repeat unfold 2 \skip1 you can hear call -- __ \skip1 ing out __ \skip1 your
+  __ \repeat unfold 2 \skip1 you can hear call -- \skip1 ing out __ \skip1 your
   name __ \skip1 Now the
 }
 
 LeadVerseThree = \lyricmode {
-  May -- or of Lone -- \skip1 ly town tuck -- ing in -- to bed "What's" in -- side 
-  his head __ "?" Vis -- ions of su -- \skip1 gar plums and \skip1 lone -- li -- 
-  ness __ \skip1 oh __ \skip1 yes __ \repeat unfold 2 \skip1 Now "we've" all got to
-  be __ \skip1 what we want to be __ \skip1 but that does -- "n't" seem quite __ 
+  May -- or of Lone -- \skip1 ly Town tuck -- ing in -- to bed "What's" in -- side 
+  his "head?" __ \skip1 Vis -- ions of su -- \skip1 gar plums and \skip1 lone -- li 
+  -- ness __ \skip1 oh __ \skip1 yes __ \repeat unfold 2 \skip1 Now "we've" all got 
+  to be __ \skip1 what we want to be __ \skip1 but that does -- "n't" seem quite __ 
   \skip1 so fun __ \repeat unfold 3 \skip1 To be the may -- or of Lone __ \skip1 ly
   "Town," pop -- u -- lat -- ion Star -- \skip1 "in'" a hole in the ground pop -- u 
   -- la -- "tion," May or of Lone __ \skip1 ly Town __ \skip1 pop -- u -- la -- tion 
@@ -456,7 +457,7 @@ BariVerseTwo = \lyricmode {
 }
 
 BariBridgeA = \lyricmode {
-  \repeat unfold 16 \skip1 the "fare," but un --- \repeat unfold 20 \skip1
+  \repeat unfold 16 \skip1 the "fare," but un -- "" \repeat unfold 20 \skip1
   da da "da," __ ""
 }
 
@@ -611,9 +612,8 @@ BassBridgeB = \lyricmode {
 }
 
 BassVerseThree = \lyricmode {
-  Dm ba
-  dm dm ba dm ba dm ba dm ba dm ba dm dm ba dm ba dm ba dm ba dm ba dm dm ba
-  dm and \repeat unfold 8 \skip1 ba dm dm "we've" \repeat unfold 28 \skip1
+  dm ba dm dm ba dm ba dm ba dm ba dm ba dm dm ba dm ba dm ba dm ba dm ba dm 
+  dm ba dm and \repeat unfold 8 \skip1 ba dm dm "we've" \repeat unfold 28 \skip1
   dm ba dm dm \repeat unfold 3 \skip1 ba dm ba dm ba dm ba dm dm in the ground
   ba dm dm "He's" the \repeat unfold 13 \skip1
 }
