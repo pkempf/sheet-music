@@ -263,7 +263,7 @@ LeadNotes = \relative f' {
   f4. fis8 ~ fis16 r16 fis4. | % 46
   f?8 f4 ges8 ~ ges8 ges4 g8 ~ | % 47
   g4 ~ \tripletNoBracket { g8 [ d8 d8 ] } d2 | % 48
-  c8 ( [ d8 ) ] \stopTextSpan es8 [ a8 ~ ] a8 g4 d8 ( | % 49
+  c8 ( [ d8 ) ] es8 [ a8 ~ ] a8 g4 d8 ( | % 49
 
   \barNumberCheck #50
   c?2 ) r4 f8 [ c8 ] | % 50
@@ -643,11 +643,6 @@ BassTag = \lyricmode {
       }
       \new Lyrics \with { 
         alignAboveContext = "staffOne" 
-        % Prevent Lead from getting too close to the Baritone staff below it
-        \override VerticalAxisGroup.nonstaff-unrelatedstaff-spacing =
-          #'((basic-distance . 5)
-            (minimum-distance . 4)
-            (padding . 1.5))
       } \lyricsto "Tenor" {
         \TenorIntro
         \TenorVerseOne
@@ -691,11 +686,6 @@ BassTag = \lyricmode {
       }
       \new Lyrics \with { 
         alignAboveContext = "staffTwo" 
-        % Prevent Baritone from floating up into the Lead staff territory
-        \override VerticalAxisGroup.nonstaff-unrelatedstaff-spacing =
-          #'((basic-distance . 5)
-            (minimum-distance . 4)
-            (padding . 1.5))
       } \lyricsto "Baritone" {
         \BariIntro
         \BariVerseOne
