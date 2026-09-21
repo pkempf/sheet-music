@@ -117,7 +117,8 @@ TenorNotes = \relative f' {
   a4 ) a8 [ a8 ] a8 a4 bes8 ~ | % 32
   bes8 bes8 r8 bes8 r8 bes8 r8 bes8 | % 33
   a8 r8 f16 [ e16 f16 g16 ] f8 r8 f4 | % 34
-  d8 \mark \markup{  \bold \italic \typewriter "Bridge A" } f8 bes8 [ g8 ~ ] g8 [ bes8 ] d4 | % 35
+  d8-\tweak outside-staff-padding #1 ^\markup { \italic \typewriter "[Tenor melody]" }
+  \mark \markup{  \bold \italic \typewriter "Bridge A" } f8 bes8 [ g8 ~ ] g8 [ bes8 ] d4 | % 35
   g,8 [ g8 ~ ] g2 r4 | % 36
   r4 g4 g4 bes8 [ g8 ( ] | % 37
   f8 ) [ d'16 cis16 ] d8 [ bes16 a16 ] bes8 [ f16 e?16 ] f8 [ f8 ] | % 38
@@ -133,7 +134,8 @@ TenorNotes = \relative f' {
   d2. ) r8 bes8 | % 46
   d8 d4 d8 ~ d8 d4 d8 ~ | % 47
   d4 ~ \tripletNoBracket { d8 [ c8 bes8 ] } a8 g4.  | % 48
-  g4 g8 [ g8 ~ ] g8 bes4 a8 ~ | % 49
+  g4-\tweak outside-staff-padding #1 ^\markup { \italic \typewriter "[Lead retakes melody]" } 
+  g8 [ g8 ~ ] g8 bes4 a8 ~ | % 49
 
   \barNumberCheck #50
   a2 r2 | % 50
@@ -164,7 +166,7 @@ TenorNotes = \relative f' {
   es8 [ f8 ] ges8 [ \tweak style #'dashed-line 
                     \tweak bound-details.left.text \markup \typewriter "rit." 
                     \tweak TextSpanner.outside-staff-padding #2 
-                    ^\startTextSpan as8 ] bes8 \stopTextSpan c4 d8 ~ | % 71
+                    ^\startTextSpan as8 ] bes8 c4 d8 ~ \stopTextSpan | % 71
   d2. r4 \bar "|."
 
 
@@ -446,8 +448,8 @@ BariIntro = \lyricmode {
 
 BariVerseOne = \lyricmode {
   doot doot doot doot doot doot doot doo doo doot doot doot doot doot
-  doot doo doo doot doot doo doo sta -- ring \repeat unfold 35 \skip1
-  doot doot doot doot \repeat unfold 5 \skip1
+  doot doo doo doot doot doo doo sta -- ring \repeat unfold 31 \skip1
+  doot doot doot doo doo doot doot doot \repeat unfold 5 \skip1
 }
 
 BariVerseTwo = \lyricmode {
