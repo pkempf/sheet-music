@@ -32,9 +32,12 @@ tripletNoBracket =
 \header {
   title = \markup \normal-text \normalsize \fontsize #9.276 \bold \italic \typewriter
   "LONELY TOWN"
-  composer = \markup \normal-text \normalsize \concat \typewriter { "arr. Peter Kempf " }
+  composer = \markup \normal-text \normalsize \concat \typewriter { 
+    \center-column { "arr. Peter Kempf " \vspace #1 }
+  }
   subtitle = \markup \normal-text \normalsize \concat \typewriter { \italic
-    "for Gotham Chorus, July 2026" }
+    \center-column { "for Gotham Chorus, July 2026" "rev September 21, 2026"}
+  }
   poet = \markup \normal-text \normalsize \concat \typewriter { "By Ryan Lerman, Theo Katzman " }
   copyright = \markup \normal-text \typewriter \normalsize \fontsize #-1.705
   "Copyright © 2025 DUKES POINT MUSIC / RESERVOIR 416 / WHOOPEE GUY MUSIC"
@@ -56,6 +59,12 @@ tripletNoBracket =
   right-margin = 0.68\cm
   indent = 1.66\cm
   short-indent = 0.3\cm
+  system-system-spacing.basic-distance = #8
+  score-system-spacing =
+    #'((basic-distance . 12)
+       (minimum-distance . 6)
+       (padding . 1)
+       (stretchability . 12))
 }
 \layout {
   \context {
@@ -159,7 +168,7 @@ TenorNotes = \relative f' {
 
   \barNumberCheck #70
   g4 g8 [ g8 ~ ] g4 g8 [ g8 ] | % 70
-  es8 [ f8 ] ges8 [ \tweak style #'dashed-line \tweak bound-details.left.text \markup \normal-text "rit." ^\startTextSpan as8 ] bes8 \stopTextSpan c4 d8 ~ | % 71
+  es8 [ f8 ] ges8 [ \tweak style #'dashed-line \tweak bound-details.left.text \markup \typewriter "rit." ^\startTextSpan as8 ] bes8 \stopTextSpan c4 d8 ~ | % 71
   d2. r4 \bar "|."
 
 }
