@@ -582,24 +582,6 @@ BassNotes = \relative f {
 
 }
 
-BassLyrics = \lyricmode {
-  \set ignoreMelismata = ##t
-  \set includeGraceNotes = ##t
-  \repeat unfold 16 \skip1 ba dm ba dm dm ba dm ba dm ba dm ba dm ba dm dm ba
-  dm ba dm ba dm ba dm ba dm dm ba dm ba "dm," the \repeat unfold 6 \skip1 ba
-  dm dm "I'm" \repeat unfold 20 \skip1 ba dm dm ba dm ba dm dm doo doo Dm ba
-  dm dm __ ba \repeat unfold 2 \skip1 ba dm ba dm dm ba dm ba dm ba dm ba dm
-  ba dm dm ba dm \repeat unfold 4 \skip1 dm ba dm dm ba dm "there's" no
-  \repeat unfold 7 \skip1 ba dm dm the \repeat unfold 38 \skip1 dm ba dm dm ba
-  dm \repeat unfold 16 \skip1 then you got -- ta pay \repeat unfold 24 \skip1
-  "don't" you "know," I know __ \skip1 the may -- "or!" da da "da," __
-  \skip1 "oh," \repeat unfold 38 \skip1 Hear it call -- "ing," now the Dm ba
-  dm dm ba dm ba dm ba dm ba dm ba dm dm ba dm ba dm ba dm ba dm ba dm dm ba
-  dm and \repeat unfold 8 \skip1 ba dm dm "we've" \repeat unfold 28 \skip1
-  dm ba dm dm \repeat unfold 3 \skip1 ba dm ba dm ba dm ba dm dm in the ground
-  ba dm dm "He's" the \repeat unfold 35 \skip1
-}
-
 BassIntro = \lyricmode {
  \repeat unfold 16 \skip1 ba
 }
