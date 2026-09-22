@@ -336,7 +336,7 @@ LeadVerseTwo = \lyricmode {
 }
 
 LeadBridgeA = \lyricmode {
-  you want to go __ \skip1 to Lone -- ly Town __ "" pay just pay the fare __ \skip1 
+  you wan -- na go __ \skip1 to Lone -- ly Town __ "" pay just pay the fare __ \skip1 
   "(Da" ba "da," da ba "da," da ba "da!)" Un -- less "you're" with "me," __ \skip1 
   then "you'll" get in for "free," __ \skip1 "'cause" ba -- by I know __ \skip1 the
   may -- "or!" da __ \skip1 "oh,"
@@ -352,8 +352,8 @@ LeadBridgeB = \lyricmode {
 LeadVerseThree = \lyricmode {
   May -- or of Lone -- \skip1 ly Town tuck -- ing in -- to bed "What's" in -- side 
   his "head?" __ \skip1 Vis -- ions of su -- \skip1 gar plums and \skip1 lone -- li 
-  -- ness __ \skip1 oh __ \skip1 yes __ \repeat unfold 2 \skip1 Now "we've" all got 
-  to be __ \skip1 what we want to be __ \skip1 but that does -- "n't" seem quite __ 
+  -- ness __ \skip1 oh __ \skip1 yes __ \repeat unfold 2 \skip1 Now "we've" all got -- 
+  ta be __ \skip1 what we wan -- na be __ \skip1 but that does -- "n't" seem quite __ 
   \skip1 so fun __ \repeat unfold 3 \skip1 To be the may -- or of Lone __ \skip1 ly
   "Town," pop -- u -- lat -- ion Star -- \skip1 "in'" a hole in the ground pop -- u 
   -- la -- "tion," May or of Lone __ \skip1 ly Town __ \skip1 pop -- u -- la -- tion 
